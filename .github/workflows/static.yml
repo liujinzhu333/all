@@ -38,7 +38,7 @@ jobs:
       - name: Configure npm
         run: npm config set registry https://registry.npm.taobao.org
       - name: Install dependencies
-        run: npm ci
+        run: npm install
       - name: Build
         run: npm run build
       - name: Setup Pages
