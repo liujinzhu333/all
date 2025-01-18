@@ -37,6 +37,7 @@ jobs:
           cache: 'npm'
       - name: Configure npm
         run: npm config set registry https://registry.npm.taobao.org
+      # gitHub Actions 依赖阻塞, 先本地构建后发布
       # - name: Install dependencies
       #   run: npm install
       # - name: Build
