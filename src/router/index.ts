@@ -5,10 +5,10 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: '/',
+      path: '/all',
       name: '',
       component: Layout,
-      redirect: 'home',
+      redirect: '/all/home',
       children: [
         {
           path: 'home',
