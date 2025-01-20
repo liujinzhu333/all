@@ -18,18 +18,33 @@
       value: 'home',
       path: 'home',
     },
-    {
-      name: 'About',
-      value: 'About',
-      path: 'about',
-    },
+    // {
+    //   name: 'About',
+    //   value: 'About',
+    //   path: 'about',
+    // },
     {
       name: '组件库',
       value: 'components',
       path: 'components',
     },
     {
-      name: '变更日志',
+      name: '项目',
+      value: 'projects',
+      path: 'projects',
+    },
+    {
+      name: '文档',
+      value: 'docs',
+      path: 'docs',
+    },
+    {
+      name: '工具',
+      value: 'utils',
+      path: 'utils',
+    },
+    {
+      name: '记录',
       value: 'changeLog',
       path: 'change-log',
     }

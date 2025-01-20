@@ -22,7 +22,7 @@
     margin: 0 auto;
     flex: 1;
     width: 100%;
-    padding: 20px 0;
+    padding: 20px;
     display: flex;
     flex-wrap: wrap;
     overflow: auto;

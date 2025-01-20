@@ -18,12 +18,11 @@
   </div>
 </template>
 <script lang="ts" setup>
-
-const props = withDefaults(defineProps<{
-  list: any[]
-}>(), {
-  list: () =>([])
-})
+  withDefaults(defineProps<{
+    list: any[]
+  }>(), {
+    list: () =>([])
+  })
 </script>
 <style scoped>
 .timeline{

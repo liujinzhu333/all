@@ -1,5 +1,8 @@
 <template>
   <div class="components-page">
+    <div class="log-toggle">
+
+    </div>
     <div
       v-for="item in dataList"
     >
@@ -12,14 +15,17 @@
           v-for="itemC in item.children"
           class="components-item"
         >
-          {{itemC.name}} - {{itemC.status}}
+          {{itemC.name}} 
+          <Tag>
+            {{itemC.status}}
+          </Tag>
         </Card>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-  import { Card } from '@/components/Base'
+  import { Card, Tag } from '@/components/Base'
   import All from '@/components/Base'
   const dataList = [
     {
@@ -34,11 +40,16 @@
         {
           name: '图标',
           value: 'Icon',
-          status: '待开发',
+          status: '待计划',
         },
         {
           name: '链接',
           value: 'Link',
+          status: '待计划',
+        },
+        {
+          name: '文本',
+          value: 'Text',
           status: '待开发',
         }
       ]
@@ -49,7 +60,7 @@
         {
           name: '布局',
           value: 'Layout',
-          status: '待开发',
+          status: '待计划',
         },
       ]
     },
@@ -59,17 +70,17 @@
         {
           name: '图钉',
           value: 'Affix',
-          status: '待开发',
+          status: '待计划',
         },
         {
           name: '面包屑',
           value: 'Breadcrumb',
-          status: '待开发',
+          status: '待计划',
         },
         {
           name: '分页',
           value: 'Pagination',
-          status: '待开发',
+          status: '待计划',
         },
       ]
     },
@@ -79,12 +90,12 @@
         {
           name: '头像',
           value: 'Avatar',
-          status: '待开发',
+          status: '待计划',
         },
         {
           name: '卡片',
           value: 'Card',
-          status: '待开发',
+          status: '待计划',
         },
         {
           name: '时间轴',
@@ -94,17 +105,17 @@
         {
           name: '标签',
           value: 'Tag',
-          status: '待开发',
+          status: '开发中',
         },
         {
           name: '进度条',
           value: 'Progress',
-          status: '待开发',
+          status: '待计划',
         },
         {
           name: '文字气泡',
           value: 'Tooltip',
-          status: '待开发',
+          status: '待计划',
         },
       ]
     },
@@ -114,17 +125,22 @@
         {
           name: '对话框',
           value: 'Modal',
-          status: '待开发',
+          status: '待计划',
+        },
+        {
+          name: '抽屉',
+          value: 'Drawer',
+          status: '待计划',
         },
         {
           name: '提示',
           value: 'Toast',
-          status: '待开发',
+          status: '待计划',
         },
         {
           name: '进度条',
           value: 'progress',
-          status: '待开发',
+          status: '待计划',
         },
       ]
     }
@@ -133,7 +149,6 @@
 <style scoped>
 .components-page{
   width: 100%;
-  max-width: 1000px;
   display: flex;
   flex-direction: column;
   gap: 20px;

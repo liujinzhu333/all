@@ -1,15 +1,30 @@
 <template>
   <div class="change-log-page">
-    <TimeLine
+    <h1>记录</h1>
+    <div>
+      变更记录，生活记录等
+    </div>
+    <Select
+      :options="typeList"
+    />
+    <Timeline
       :list="dataList"
     />
   </div>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { TimeLine } from '@/components/Base'
+import { Timeline, Select } from '@/components/Base'
+
+const typeList = ref([
+  '全部', '生活', '技术', '网站', '变更日志'
+])
 
 const dataList = ref([
+  {
+    time: '2025.1.20',
+    content: '架构基本确定，页面区分',
+  },
   {
     time: '2025.1.18',
     content: '架构整理, Timeline组件',
