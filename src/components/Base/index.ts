@@ -4,6 +4,7 @@ import Timeline from "./Timeline.vue";
 import Tag from "./Tag.vue";
 
 import Select from "./Select.vue";
+import Tree from './Tree/index.vue'
 
 export {
   Button,
@@ -11,6 +12,7 @@ export {
   Timeline,
   Tag,
   Select,
+  Tree,
 }
 export default {
   Button,
@@ -18,4 +20,5 @@ export default {
   Timeline,
   Tag,
   Select,
+  Tree,
 }

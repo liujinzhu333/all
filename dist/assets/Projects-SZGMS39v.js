@@ -1,1 +1,0 @@
-import{_ as o,c as r,e as n,o as t}from"./index-BIJLOoNp.js";const s={};function c(l,e){return t(),r("div",null,e[0]||(e[0]=[n("h1",null,"项目",-1),n("div",null," 个人作品集 ",-1)]))}const _=o(s,[["render",c]]);export{_ as default};

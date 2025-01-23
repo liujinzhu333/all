@@ -22,6 +22,10 @@ const typeList = ref([
 
 const dataList = ref([
   {
+    time: '2025.1.23',
+    content: '首页工作台，依赖组件',
+  },
+  {
     time: '2025.1.20',
     content: '架构基本确定，页面区分',
   },

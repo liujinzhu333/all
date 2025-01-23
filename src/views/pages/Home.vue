@@ -2,63 +2,93 @@
   <div class="home-page">
     <Card
       style="flex: 1;"
+      title="我的工作台"
     >
-      我的工作台
-      待办
+      <div style="margin-bottom: 15px;">
+        <Button>待办</Button>
+      </div>
       <div >
-        <ul>
-          <li v-for="item in planList">
-            <div>{{ item.name }}</div>
-            <ul v-if="item.children">
-              <li v-for="itemI in item.children">
-                <div>{{ itemI.name }}</div>
-              </li>
-            </ul>
-          </li>
-        </ul>
+        <Tree
+          :list="planList"
+        >
+          <template #title="{ treeNode }">
+            {{ treeNode.title }}
+            <Tag>{{ treeNode.status }}</Tag>
+          </template>
+        </Tree>
       </div>
     </Card>
     <Card
       style="width: 200px;"
+      title="每日资讯"
     >
-        每日资讯
+        
     </Card>
   </div>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { Card } from '@/components/Base'
+import { Card, Tag, Tree, Button } from '@/components/Base'
 
 const planList = ref<any[]>([])
 
 function getPlan() {
   planList.value = [
     {
-      name: '首页-工作台',
+      title: '首页-工作台-UI',
       type: '技术',
-      status: '未开始',
+      status: '进行中',
       children: [
         {
-          name: '卡片组件Card',
-          status: '未开始',
+          title: '卡片组件Card',
+          status: '完成',
         },
         {
-          name: '标签组件Tag',
-          status: '未开始',
+          title: '标签组件Tag',
+          status: '完成',
         },
         {
-          name: '标签组件Tag',
-          status: '未开始',
+          title: '树形控件Tree',
+          status: '完成',
         },
         {
-          name: '树形控件Tree',
+          title: '按钮Button',
           status: '未开始',
         },
       ]
     },
     {
-      name: '首页-每日资讯',
+      title: '首页-工作台',
       type: '技术',
+      status: '未开始',
+      children: [
+        {
+          title: '数据格式设计',
+          status: '未开始',
+        },
+        {
+          title: '项目数据手动填充',
+          status: '未开始',
+        },
+        {
+          title: '功能开发',
+          status: '未开始',
+        },
+      ]
+    },
+    {
+      title: '首页-每日资讯',
+      type: '技术',
+      status: '未开始',
+    },
+    {
+      title: '驾照体检',
+      type: '生活',
+      status: '未开始',
+    },
+    {
+      title: '公司体检',
+      type: '',
       status: '未开始',
     }
   ]
@@ -70,6 +100,7 @@ getPlan()
 .home-page{
   width: 100%;
   display: flex;
+  align-items: flex-start;
   gap: 20px;
 }
 </style>
