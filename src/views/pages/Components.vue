@@ -1,8 +1,5 @@
 <template>
   <div class="components-page">
-    <div class="log-toggle">
-
-    </div>
     <div
       v-for="item in dataList"
     >
@@ -14,6 +11,7 @@
         <Card
           v-for="itemC in item.children"
           class="components-item"
+          :cover-text="itemC.name"
         >
           {{itemC.name}} 
           <Tag>

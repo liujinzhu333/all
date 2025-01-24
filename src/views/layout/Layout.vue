@@ -3,7 +3,6 @@
     <Header />
     <div class="body">
       <RouterView />
-
     </div>
   </div>
 

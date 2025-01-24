@@ -1,0 +1,1 @@
+import{_ as t,c as o,b as n,o as r}from"./index-D3uvEMR9.js";const s={};function l(c,e){return r(),o("div",null,e[0]||(e[0]=[n("h1",null,"工具",-1),n("div",null," 自己将来封装的方法，建立的插件等等，好用的网站，有用的链接等等 ",-1)]))}const _=t(s,[["render",l]]);export{_ as default};

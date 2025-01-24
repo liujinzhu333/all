@@ -22,6 +22,10 @@ const typeList = ref([
 
 const dataList = ref([
   {
+    time: '2025.1.24',
+    content: '首页调整，卡片Card支持封面',
+  },
+  {
     time: '2025.1.23',
     content: '首页工作台，依赖组件',
   },
