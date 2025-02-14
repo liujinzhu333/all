@@ -3,7 +3,7 @@
     <div
       v-for="item in dataList"
     >
-      <h3>{{item.title}}</h3>
+      <h3 class="components-type">{{item.title}}</h3>
       <div
         v-if="item.children"
         class="components-item-list"
@@ -13,6 +13,9 @@
           class="components-item"
           :cover-text="itemC.name"
         >
+          <template #cover>
+            <component :is="itemC.component"/>
+          </template>
           {{itemC.name}} 
           <Tag>
             {{itemC.status}}
@@ -150,6 +153,9 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  .components-type{
+    margin-bottom: 12px;
+  }
 }
 .components-item-list {
   display: flex;

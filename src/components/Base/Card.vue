@@ -13,15 +13,17 @@
       v-if="coverImage || coverText"
       class="card-cover"
     >
-      <img
-        v-if="coverImage"
-        :src="coverImage"
-      />
-      <span
-        v-else-if="coverText"
-      >
-        {{ coverText}}
-      </span>
+      <slot name="cover">
+        <img
+          v-if="coverImage"
+          :src="coverImage"
+        />
+        <span
+          v-else-if="coverText"
+        >
+          {{ coverText}}
+        </span>
+      </slot>
     </div>
     <div class="card-content">
       <slot>

@@ -5,6 +5,7 @@ import Tag from "./Tag.vue";
 
 import Select from "./Select.vue";
 import Tree from './Tree/index.vue'
+import Calender from './Calendar/index.vue'
 
 export {
   Button,
@@ -13,6 +14,7 @@ export {
   Tag,
   Select,
   Tree,
+  Calender,
 }
 export default {
   Button,
@@ -21,4 +23,5 @@ export default {
   Tag,
   Select,
   Tree,
+  Calender,
 }

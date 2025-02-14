@@ -68,10 +68,10 @@ export const planList:PlanItem[] = [
         title: '公司体检',
       },
       {
-        title: '孕检-2.8',
+        title: '看房子',
       },
       {
-        title: '看房子',
+        title: '拍照',
       }
     ]
   }

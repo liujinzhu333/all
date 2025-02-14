@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<{
 
 })
 const emits = defineEmits(['change'])
-const change = (e) => {
+const change = (e: any) => {
   const selectOption = props.options[e.target.selectedIndex]
   emits('change', selectOption)
 }
