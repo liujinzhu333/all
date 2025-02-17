@@ -19,26 +19,35 @@
         </Tree>
       </div>
     </Card>
-    <Card
-      :title="`签到（${observe?.weather}）`"
-      class="news-card"
-    >
-        <Calender />
-    </Card>
+    <div>
+      <Card
+        :title="`签到（${observe?.weather}）`"
+        class="news-card"
+      >
+          <Calender />
+      </Card>
+      <Card
+        title="英语"
+        class="news-card"
+      >
+      </Card>
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import axios from 'axios';
 import { Card, Tag, Tree, Button, Calender } from '@/components/Base'
 import { planList as planListData } from '@/data/plan'
 import type { PlanItem } from '@/data/plan'
+
+import { getWeatherData } from '@/services/HomeServices.ts'
 
 const planList = ref<PlanItem[]>([])
 
 function getPlan() {
   planList.value = planListData
 }
+console.log(Card)
 getPlan()
 
 function addClick() {
@@ -47,8 +56,7 @@ function addClick() {
 const observe = ref()
 
 async function getWeather(){
-  const res = await axios.get('/api/weather/common?source=pc&weather_type=observe&province=四川&city=成都&county=成华区')
-  observe.value = res.data.data.observe
+  observe.value = await getWeatherData()
 }
 getWeather()
 

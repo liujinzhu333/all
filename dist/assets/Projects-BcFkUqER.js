@@ -1,0 +1,1 @@
+import{d as o,o as t,c as r,b as n}from"./index-BFPr64Mx.js";const c=o({__name:"Projects",setup(s){return(a,e)=>(t(),r("div",null,e[0]||(e[0]=[n("h1",null,"项目",-1),n("div",null," 个人作品集 ",-1)])))}});export{c as default};
