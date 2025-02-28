@@ -1,8 +1,7 @@
 <template>
-
   <el-button size="small" type="primary" @click="getAllTable">获取表</el-button>
-  <el-button size="small" @click="updateTable()">添加数据表</el-button>
-  <el-button size="small" @click="getJson()">导出</el-button>
+  <el-button size="small" v-if="canOperate" @click="updateTable()">添加数据表</el-button>
+  <el-button size="small" v-if="canOperate" @click="getJson()">导出</el-button>
   <div>
     <div v-for="item in tableList">
       <div class="table-item"
@@ -10,8 +9,8 @@
       >
         <el-text class="mx-1">{{ item.name }}</el-text>
         <div style="display: flex; gap: 5px;">
-          <el-link type="primary" :icon="Edit" @click.stop="updateTable(item)"/>
-          <el-link type="danger" :icon="Delete" @click.stop="delTable(item.name)"/>
+          <el-link v-if="canOperate" type="primary" :icon="Edit" @click.stop="updateTable(item)"/>
+          <el-link v-if="canOperate" type="danger" :icon="Delete" @click.stop="delTable(item.name)"/>
         </div>
       </div>
     </div>
@@ -68,6 +67,7 @@
   import { onMounted, ref, computed } from 'vue'
   import { Edit, Delete } from '@element-plus/icons-vue'
   import manageService from '@/services/manageService'
+  import { canOperate } from '@/config'
 
   const emits = defineEmits(['select'])
 

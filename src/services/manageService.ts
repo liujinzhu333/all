@@ -1,7 +1,6 @@
 import http from './httpService'
 
 class ManageService {
-
   /** 数据库连接状态 */
   public async getDatabaseConnectStatus(){
     return http.get('/api/db/status')

@@ -7,7 +7,7 @@
         <span>数据表({{name}})数据</span>
       </div>
     </template>
-    <el-button @click="openModal()">添加</el-button>
+    <el-button v-if="canOperate" @click="openModal()">添加</el-button>
     <el-table :data="tableInfoList" style="width: 100%" border>
       <el-table-column
         v-for="item in columns"
@@ -56,6 +56,7 @@
   import { computed, ref, watch } from 'vue'
   import { Edit, Delete } from '@element-plus/icons-vue'
   import manageService from '@/services/manageService'
+  import { canOperate } from '@/config'
 
   const props = withDefaults(defineProps<{
     name: string
@@ -67,10 +68,10 @@
   const tableInfoList = ref()
   const form = ref<any>({})
 
-  const columns = computed(() => (props.tableInfoColumn ? [...props.tableInfoColumn, {
+  const columns = computed(() => (props.tableInfoColumn ? (canOperate ? [...props.tableInfoColumn, {
     title: '操作',
     key: 'action'
-  }]: []))
+  }] : props.tableInfoColumn) : []))
 
   const getList = async () => {
     tableInfoList.value = await manageService.getDataList(props.name, {})

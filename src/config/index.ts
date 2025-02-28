@@ -1,0 +1,1 @@
+export const canOperate = import.meta.env.DEV

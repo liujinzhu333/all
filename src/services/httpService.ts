@@ -5,17 +5,24 @@ const useJson = !isDev
 
 // 创建axios实例
 const http = axios.create({
-  baseURL: '/',  // API的基础路径
+  baseURL: useJson ? '/all/db' : '/',  // API的基础路径
   timeout: 10000,                       // 请求超时时间
 })
 
 const getJsonUrl = (config: any) => {
   // 重定向到 public 目录下的 data
   if (config.url === '/api/db/table/list') {
-    return '/all/sqlite_sequence.json' 
+    return '/data/sqlite_sequence.json' 
   }
   if (config.url === '/api/db/table/info') {
-    return 
+    const { name } = config.params
+    return `/table_info/${name}.json`
+  }
+  // 定义正则表达式并捕获 tableName
+  const pattern = /^\/api\/db\/table\/([^/]+)\/list$/;
+  const match = config.url.match(pattern);
+  if (pattern.test(config.url)) {
+    return `/data/${match[1]}.json`
   }
   return 
 }
@@ -23,10 +30,10 @@ const getJsonUrl = (config: any) => {
 // 请求拦截器
 http.interceptors.request.use(config => {
   // 在发送请求之前做些什么，比如添加token等
+  // config.headers['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
   if (useJson) {
     config.url = getJsonUrl(config)
   }
-  // config.headers['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
   return config;
 }, error => {
   // 对请求错误做些什么

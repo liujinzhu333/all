@@ -2,6 +2,7 @@
   <div style="display: flex;align-items: center;justify-content: space-between;">
     数据库
     <el-switch
+      v-if="canOperate"
       v-model="dbStatus"
       @change="handleChange"
     />
@@ -10,6 +11,7 @@
 <script lang="ts" setup>
   import { onMounted, ref } from 'vue'
   import manageService from '@/services/manageService'
+  import { canOperate } from '@/config'
 
   const dbStatus = ref(false)
 
