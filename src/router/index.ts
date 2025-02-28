@@ -63,6 +63,14 @@ const router = createRouter({
           },
           component: () => import('../views/pages/ChangeLog.vue'),
         },
+        {
+          path: 'manage',
+          name: 'manage',
+          meta: {
+            title: '管理',
+          },
+          component: () => import('../views/pages/manage/Manage.vue'),
+        },
       ]
     },
     

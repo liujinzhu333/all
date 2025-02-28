@@ -1,11 +1,14 @@
 <template>
-  <div class="main">
-    <Header />
-    <div class="body">
-      <RouterView />
-    </div>
+  <div class="common-layout">
+    <el-container>
+      <el-header>
+        <Header />
+      </el-header>
+      <el-main>
+        <RouterView />
+      </el-main>
+    </el-container>
   </div>
-
 </template>
 <script lang="ts" setup>
   import { RouterView } from 'vue-router'

@@ -1,5 +1,6 @@
 <template>
   <div class="components-page">
+    <Button />
     <div
       v-for="item in dataList"
     >
@@ -28,6 +29,7 @@
 <script lang="ts" setup>
   import { Card, Tag } from '@/components/Base'
   import All from '@/components/Base'
+  import { Button } from '@/components/Example'
   const dataList = [
     {
       title: '通用',

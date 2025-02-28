@@ -6,6 +6,11 @@ import Tag from "./Tag.vue";
 import Select from "./Select.vue";
 import Tree from './Tree/index.vue'
 import Calender from './Calendar/index.vue'
+import Table from "./Table.vue";
+import Switch from './Switch.vue';
+import Modal from "./Modal.vue";
+import Form from "./Form/Form.vue";
+import FormItem from "./Form/FormItem.vue";
 
 export {
   Button,
@@ -15,6 +20,11 @@ export {
   Select,
   Tree,
   Calender,
+  Table,
+  Switch,
+  Modal,
+  Form,
+  FormItem,
 }
 export default {
   Button,
@@ -24,4 +34,9 @@ export default {
   Select,
   Tree,
   Calender,
+  Table,
+  Switch,
+  Modal,
+  Form,
+  FormItem,
 }

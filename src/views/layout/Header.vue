@@ -47,6 +47,11 @@
       name: '记录',
       value: 'changeLog',
       path: 'change-log',
+    },
+    {
+      name: '管理',
+      value: 'manage',
+      path: 'manage',
     }
   ]
 </script>

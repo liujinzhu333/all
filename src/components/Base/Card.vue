@@ -8,6 +8,9 @@
       >
         {{ title }}
       </slot>
+      <slot
+        name="action"
+      />
     </div>
     <div
       v-if="coverImage || coverText"
@@ -50,6 +53,9 @@ const slots = useSlots()
   background-color: var(--color-white);
   box-shadow: 0 1px 5px var(--color-shadow);
   .card-header{
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
     padding: 8px 12px;
     font-weight: 500;
     border-bottom: 0.5px solid var(--color-border);
@@ -71,6 +77,7 @@ const slots = useSlots()
   }
   .card-content{
     padding: 8px 12px;
+    overflow: auto;
   }
 }
 </style>
