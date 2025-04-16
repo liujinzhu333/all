@@ -23,21 +23,21 @@
     //   value: 'About',
     //   path: 'about',
     // },
-    {
-      name: '组件库',
-      value: 'components',
-      path: 'components',
-    },
+    // {
+    //   name: '组件库',
+    //   value: 'components',
+    //   path: 'components',
+    // },
     {
       name: '项目',
       value: 'projects',
       path: 'projects',
     },
-    {
-      name: '文档',
-      value: 'docs',
-      path: 'docs',
-    },
+    // {
+    //   name: '文档',
+    //   value: 'docs',
+    //   path: 'docs',
+    // },
     {
       name: '工具',
       value: 'utils',
@@ -59,7 +59,6 @@
 header{
   width: 100%;
   height: 64px;
-  padding: 4px 20px;
   background-color: var(--color-white);
   display: flex;
   align-items: center;

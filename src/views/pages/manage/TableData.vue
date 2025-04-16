@@ -38,8 +38,33 @@
         v-for="item in tableInfoColumn"
         :label="item.title"
       >
-        <el-input v-model="form[item.key]" 
-        :disabled="item.key === 'id'" />
+      {{item}}
+        <el-input
+          v-if="item.type === 'CLOB'"
+          v-model="form[item.key]"
+          :rows="2"
+          type="textarea"
+          placeholder="Please input"
+        />
+        <el-select
+          v-else-if="item.type === 'CHAR'"
+          v-model="form[item.key]"
+          placeholder="Select"
+        >
+          <el-option label="测试" value="ce" />
+        </el-select>
+        <el-date-picker
+          v-else-if="item.type === 'DATETIME'"
+          v-model="form[item.key]"
+          type="date"
+          value-format="YYYY-MM-DD"
+          placeholder="Pick a day"
+        />
+        <el-input
+          v-else
+          v-model="form[item.key]" 
+          :disabled="item.key === 'id'"
+        />
       </el-form-item>
     </el-form>
     <template #footer>

@@ -72,6 +72,7 @@
     tableInfoColumn.value = tableInfo.value.list.map(item => ({
       title: item.name,
       key: item.name,
+      type: item.type,
     }))
   }
   const addColumn = async () => {

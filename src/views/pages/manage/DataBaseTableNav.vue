@@ -22,8 +22,11 @@
     :before-close="handleClose"
   >
     <el-form :model="form" label-width="auto" style="max-width: 600px">
-      <el-form-item label="数据表名">
+      <el-form-item label="数据表">
         <el-input v-model="form.name" />
+      </el-form-item>
+      <el-form-item label="数据表名">
+        <el-input v-model="form.title" />
       </el-form-item>
       <el-table :data="tableInfoList" style="width: 100%" border>
         <el-table-column
@@ -34,11 +37,21 @@
           <template #default="scope">
             <div v-if="scope.row.isAdd && item.isEdit !== false">
               <el-select v-if="item.key === 'type'" v-model="scope.row[item.key]">
+                <!-- 文本input -->
                 <el-option value="TEXT" />
+                <!-- 长文本 textarea -->
+                <el-option value="CLOB"/>
+                <!-- 数字input -->
                 <el-option value="INTEGER" />
+                <!-- 文本作select -->
+                <el-option value="CHAR" />
                 <el-option value="NULL" />
                 <el-option value="REAL" />
                 <el-option value="BLOB" />
+                <!-- 时间 -->
+                <el-option value="DATETIME" />
+                <el-option value="DATE" />
+                <el-option value="HHH" />
               </el-select>
               <el-input v-else v-model="scope.row[item.key]" />
             </div>
@@ -121,7 +134,7 @@
   const addTable = async () => {
     if (!form.value.name) return
     const keys = tableInfoList.value.filter(item => item.isAdd)
-    await manageService.addTable(form.value.name, keys)
+    await manageService.addTable(form.value.name, form.value.title, keys)
     getAllTable()
   }
   // 添加数据表字段

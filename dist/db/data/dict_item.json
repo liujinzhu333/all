@@ -1,0 +1,9 @@
+[
+  {
+    "id": 1,
+    "dict_id": 1,
+    "name": "数据表",
+    "value": "sqlite_sequence",
+    "dict": "config"
+  }
+]

@@ -15,6 +15,16 @@
   import Header from './Header.vue';
 </script>
 <style scoped>
+.common-layout{
+  .el-header {
+    border-bottom: 1px solid #e4e7ed;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.12);
+    z-index: 1;
+  }
+  .el-main {
+    background-color: #fafafa;
+  }
+}
 .main{
   width: 100%;
   height: 100vh;

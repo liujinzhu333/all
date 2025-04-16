@@ -22,5 +22,21 @@
     "notnull": 0,
     "dflt_value": null,
     "pk": 0
+  },
+  {
+    "cid": 3,
+    "name": "logo",
+    "type": "TEXT",
+    "notnull": 0,
+    "dflt_value": null,
+    "pk": 0
+  },
+  {
+    "cid": 4,
+    "name": "type",
+    "type": "TEXT",
+    "notnull": 0,
+    "dflt_value": null,
+    "pk": 0
   }
 ]

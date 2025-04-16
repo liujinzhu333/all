@@ -22,8 +22,8 @@ class ManageService {
     return http.get('/api/db/table/list')
   }
   /** 新增数据表 */
-  public async addTable(name: string, keys: any[]){
-    return http.post('/api/db/table/create', { name, keys })
+  public async addTable(name: string, title: string, keys: any[]){
+    return http.post('/api/db/table/create', { name, title, keys })
   }
   /** 删除数据表 */
   public async delTable(name: string){

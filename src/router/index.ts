@@ -1,14 +1,19 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
 import Layout from '../views/layout/Layout.vue'
 
+const isDev = import.meta.env.DEV
+const history = isDev ? createWebHistory() : createWebHashHistory()
+const baseURL = isDev ? '/all' : '/'
 const router = createRouter({
-  history: createWebHistory(),
+  history: history,
   routes: [
     {
-      path: '/all',
+      path: baseURL,
       name: '',
       component: Layout,
-      redirect: '/all/home',
+      redirect: {
+        name: 'home',
+      },
       children: [
         {
           path: 'home',
@@ -71,10 +76,22 @@ const router = createRouter({
           },
           component: () => import('../views/pages/manage/Manage.vue'),
         },
+        {
+          path: 'kaogong',
+          name: 'kaogong',
+          component: () => import('../views/pages/KaoGong.vue'),
+        }
       ]
     },
-    
+    {
+      path: '/all/time',
+      name: 'time',
+      component: () => import('@/views/pages/time/time.vue')
+    }
   ],
 })
-
+router.beforeEach((to, from, next) => {
+  console.log('Navigating to:', to.path); // 打印路由路径
+  next();
+});
 export default router
