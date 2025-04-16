@@ -33,11 +33,11 @@
       value: 'projects',
       path: 'projects',
     },
-    // {
-    //   name: '文档',
-    //   value: 'docs',
-    //   path: 'docs',
-    // },
+    {
+      name: '文档',
+      value: 'docs',
+      path: 'docs',
+    },
     {
       name: '工具',
       value: 'utils',

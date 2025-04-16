@@ -51,6 +51,7 @@
   import { Card, Tag, Tree, Button, Calender } from '@/components/Base'
   import { planList as planListData } from '@/data/plan'
   import type { PlanItem } from '@/data/plan'
+  // @ts-ignore
   import { Solar, Lunar } from 'lunar-javascript'
   import manageService from '@/services/manageService';
 
@@ -61,7 +62,7 @@
   }
   getDays()
 
-  const getLunarDisplay = (jsDate) => {
+  const getLunarDisplay = (jsDate: any) => {
 
       const lunar = Lunar.fromDate(jsDate);
 
@@ -73,17 +74,16 @@
       // console.log(dayList.value)
 
       if (dayList.value) {
-        const a =  dayList.value.filter(item => {
-          const dayList = item.day.split('-')
+        const a: any = dayList.value.filter((item: any) => {
+          const dayList = item?.day?.split('-')
           // console.log([0])
           return dayList[1] == mm && dayList[2] == dd
-        })
+        }) || []
         if (a.length) {
           return a[0].title
         }
       }
-      
-
+    
       // 高亮节日
       const festivals = lunar.getFestivals();
 

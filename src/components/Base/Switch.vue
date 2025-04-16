@@ -23,7 +23,7 @@
   }>(), {
     modelValue: true
   })
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     emits('update: modelValue', e.target.checked)
     emits('change', e.target.checked)
   }

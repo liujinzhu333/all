@@ -85,6 +85,12 @@
   }>(), {
     level: 0,
   })
+  
+  defineSlots<{
+    default?: (props: { /* 默认插槽参数 */ }) => any
+    title?: (props: { treeNode: TreeItemI }) => any
+    action?: (props: { treeNode: TreeItemI }) => any
+  }>()
 
   const slots = useSlots()
 

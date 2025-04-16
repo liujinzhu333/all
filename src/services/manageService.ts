@@ -2,15 +2,15 @@ import http from './httpService'
 
 class ManageService {
   /** 数据库连接状态 */
-  public async getDatabaseConnectStatus(){
+  public async getDatabaseConnectStatus(): Promise<any>{
     return http.get('/api/db/status')
   }
   /** 连接数据库 */
-  public async connectDatabase(){
+  public async connectDatabase(): Promise<any>{
     return http.get('/api/db/connect')
   }
   /** 断开数据库连接 */
-  public async closeConnection(){
+  public async closeConnection(): Promise<any>{
     return http.get('/api/db/close')
   }
   /** 断开数据库连接 */
@@ -34,11 +34,11 @@ class ManageService {
     return http.post('/api/db/table/add_column', { name, keys })
   }
   /** 获取数据表结构 */
-  public async getTableInfo(name: string){
+  public async getTableInfo(name: string): Promise<any>{
     return http.get('/api/db/table/info', { params: { name }})
   }
   /** 获取数据表数据 */
-  public async getDataList(tableName: string, params?: any){
+  public async getDataList(tableName: string, params?: any): Promise<any>{
     return http.get(`/api/db/table/${tableName}/list`, { params })
   }
   /** 添加数据 */

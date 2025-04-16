@@ -22,7 +22,7 @@
   })
   const getList = async () => {
     const data = await manageService.getDataList('utils') || []
-    utilList.value = data.reduce((acc, item) => {
+    utilList.value = data?.reduce((acc: any, item:any) => {
       const type = item.type; // 获取当前对象的 type 属性
       if (!acc[type]) {
         acc[type] = []; // 如果该类型尚未分组，则初始化一个空数组

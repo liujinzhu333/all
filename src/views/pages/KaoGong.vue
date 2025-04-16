@@ -17,9 +17,8 @@
       </ul>
     </el-timeline-item>
   </el-timeline>
-
 </template>
-<script setup>
+<script setup lang="ts">
   const timeList = [
     {
       time: '2025-10',
