@@ -50,7 +50,7 @@ const router = createRouter({
           meta: {
             title: '项目',
           },
-          component: () => import('../views/pages/Docs.vue'),
+          component: () => import('../views/pages/Docs/Docs.vue'),
         },
         {
           path: 'utils',

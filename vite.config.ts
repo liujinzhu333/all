@@ -11,6 +11,7 @@ export default defineConfig({
     vue(),
     vueDevTools(),
   ],
+  assetsInclude: ['​**​/*.md'], // 明确包含 .md 文件
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

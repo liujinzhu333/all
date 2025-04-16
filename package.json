@@ -12,9 +12,12 @@
   },
   "dependencies": {
     "axios": "^1.7.9",
+    "dompurify": "^3.2.5",
     "element-plus": "^2.9.5",
     "lunar-javascript": "^1.7.1",
+    "marked": "^15.0.8",
     "pinia": "^2.3.0",
+    "prismjs": "^1.30.0",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
   },
