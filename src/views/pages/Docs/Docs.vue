@@ -6,18 +6,18 @@
         placeholder="查找"
       />
       <el-tree
-        :data="docsData"
+        ref="treeRef"
+        :data="docsMenu"
         :props="defaultProps"
+        :filter-node-method="filterNode"
         @node-click="handleNodeClick"
       />
     </div>
     <div class="docs-page-content">
       <h1>{{ currentDocs?.title }}</h1>
-      <!-- <div>
-        {{ currentDocs?.docs }}
-      </div> -->
       <DocsViewer
-        docPath="/docs/guide.md"
+        v-if="currentDocs?.docsPath"
+        :docs-path="currentDocs.docsPath"
       />
       <!-- <div>
         分为首页、项目、文档、工具、记录、管理六个页面
@@ -67,57 +67,81 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { ref, nextTick, } from 'vue'
+  import { ref, watch } from 'vue'
+  import docsService from '@/services/docsServices'
+
   import DocsViewer from './DocsViewer.vue'
+
   interface DocsItem {
     title: string
     docs: string
+    docsPath: string
     children?: DocsItem[]
+    [key: string]: any
   }
   const defaultProps = {
     children: 'children',
     label: 'title',
   }
-  const docsData: DocsItem[] = [
-    {
-      title: '说明',
-      docs: '',
-      children: [
-        {
-          title: '首页',
-          docs: ''
-        },
-        {
-          title: '项目',
-          docs: ''
-        },
-        {
-          title: '文档',
-          docs: ''
-        },
-        {
-          title: '工具',
-          docs: ''
-        },
-        {
-          title: '记录',
-          docs: ''
-        },
-        {
-          title: '管理',
-          docs: ''
-        },
-      ],
-    }
-  ]
+  // const docsData: DocsItem[] = [
+  //   {
+  //     title: '说明',
+  //     docs: '',
+  //     children: [
+  //       {
+  //         title: '首页',
+  //         docs: ''
+  //       },
+  //       {
+  //         title: '项目',
+  //         docs: ''
+  //       },
+  //       {
+  //         title: '文档',
+  //         docs: ''
+  //       },
+  //       {
+  //         title: '工具',
+  //         docs: ''
+  //       },
+  //       {
+  //         title: '记录',
+  //         docs: ''
+  //       },
+  //       {
+  //         title: '管理',
+  //         docs: ''
+  //       },
+  //     ],
+  //   }
+  // ]
 
+  const treeRef = ref()
   const filterText = ref('')
+  const docsMenu = ref<DocsItem[]>([])
   const currentDocs = ref<DocsItem>()
-  currentDocs.value = docsData[0]
+
+  const filterNode = (value: string, data: DocsItem) => {
+    if (!value) return true
+    return data.title.includes(value)
+  }
 
   const handleNodeClick = (data: DocsItem) => {
     currentDocs.value = data
   }
+  const getDocsMenu = async () => {
+    try {
+      const list = await docsService.getDocsMenu()
+      docsMenu.value = list
+      currentDocs.value = docsMenu.value?.[0] || {}
+    } catch (err) {
+      console.error('获取docs目录:', err)
+    }
+  }
+  getDocsMenu()
+  watch(filterText, (val) => {
+    treeRef.value!.filter(val)
+  })
 </script>
 <style scoped>
 .docs-page{

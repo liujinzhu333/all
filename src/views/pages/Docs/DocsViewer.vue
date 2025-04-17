@@ -7,50 +7,62 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, nextTick } from 'vue'
-import { marked } from 'marked'
-// import Prism from 'prismjs'
-import DOMPurify from 'dompurify'
+  import { ref, onMounted, nextTick, watch } from 'vue'
+  import { marked } from 'marked'
+  // import Prism from 'prismjs'
+  import DOMPurify from 'dompurify'
 
-const props = defineProps({
-  docPath: { type: String, required: true } // 如: '/docs/guide.md'
-})
+  const props = withDefaults(defineProps<{
+    docsPath: string
+  }>(), {
+    docsPath: ''  // 如: '/docs/guide.md'
+  })
 
-const htmlContent = ref('')
-const loading = ref(true)
-const error = ref<string>()
+  const htmlContent = ref('')
+  const loading = ref(true)
+  const error = ref<string>()
 
-// 高亮配置
-// marked.setOptions({
-//   highlight: (code: string, lang: string) => {
-//     const validLang = Prism.languages[lang] ? lang : 'markup'
-//     return Prism.highlight(code, Prism.languages[validLang], validLang)
-//   }
-// } as any)
+  // 高亮配置
+  // marked.setOptions({
+  //   highlight: (code: string, lang: string) => {
+  //     const validLang = Prism.languages[lang] ? lang : 'markup'
+  //     return Prism.highlight(code, Prism.languages[validLang], validLang)
+  //   }
+  // } as any)
+  const init = async () => {
+    try {
+      // 1. 加载原始文本
+      // 关键：使用 Vite 环境变量处理基础路径
+      const basePath = import.meta.env.BASE_URL
+      if (!props.docsPath) return
+      const fullPath = `${basePath}${props.docsPath.replace(/^\//, '')}`
+      const response = await fetch(fullPath)
+      if (!response.ok) throw new Error(`HTTP Error: ${response.status}`)
+      
+      const rawText = await response.text()
+      // *** 过滤 Frontmatter 纯正则方案
+      const contentText = rawText.replace(/^---[\s\S]*?---/, '')
+      // 2. 转换并净化
+      const unsafeHtml = marked.parse(contentText)
+      htmlContent.value = DOMPurify.sanitize(unsafeHtml as any)
 
-onMounted(async () => {
-  try {
-    // 1. 加载原始文本
-    // 关键：使用 Vite 环境变量处理基础路径
-    const basePath = import.meta.env.BASE_URL
-    const fullPath = `${basePath}${props.docPath.replace(/^\//, '')}`
-    const response = await fetch(fullPath)
-    if (!response.ok) throw new Error(`HTTP Error: ${response.status}`)
-    const rawText = await response.text()
-
-    // 2. 转换并净化
-    const unsafeHtml = marked.parse(rawText)
-    htmlContent.value = DOMPurify.sanitize(unsafeHtml as any)
-
-    // 3. 手动触发代码高亮
-    await nextTick()
-    // Prism.highlightAll()
-  } catch (err: any) {
-    error.value = `文档加载失败: ${err.message}`
-  } finally {
-    loading.value = false
+      // 3. 手动触发代码高亮
+      // await nextTick()
+      // Prism.highlightAll()
+    } catch (err: any) {
+      error.value = `文档加载失败: ${err.message}`
+    } finally {
+      loading.value = false
+    }
   }
-})
+
+  onMounted(async () => {
+    init()
+  })
+  watch(() => props.docsPath, () => {
+
+    init()
+  })
 </script>
 
 <style>

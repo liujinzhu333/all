@@ -1,0 +1,44 @@
+[
+  {
+    "name": "all",
+    "path": "/Users/liujinzhu/code/no-name/all/public/docs/all",
+    "docsPath": "/docs/all/index.md",
+    "isDirectory": true,
+    "meta": {
+      "title": "系统"
+    },
+    "title": "系统",
+    "children": [
+      {
+        "name": "docs.md",
+        "path": "/Users/liujinzhu/code/no-name/all/public/docs/all/docs.md",
+        "docsPath": "/docs/all/docs.md",
+        "isDirectory": false,
+        "meta": {
+          "title": "文档"
+        },
+        "title": "文档"
+      },
+      {
+        "name": "home.md",
+        "path": "/Users/liujinzhu/code/no-name/all/public/docs/all/home.md",
+        "docsPath": "/docs/all/home.md",
+        "isDirectory": false,
+        "meta": {
+          "title": "首页"
+        },
+        "title": "首页"
+      }
+    ]
+  },
+  {
+    "name": "other.md",
+    "path": "/Users/liujinzhu/code/no-name/all/public/docs/other.md",
+    "docsPath": "/docs/other.md",
+    "isDirectory": false,
+    "meta": {
+      "title": "其他"
+    },
+    "title": "其他"
+  }
+]
