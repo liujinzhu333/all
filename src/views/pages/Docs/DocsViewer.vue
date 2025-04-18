@@ -41,7 +41,7 @@
       
       const rawText = await response.text()
       // *** 过滤 Frontmatter 纯正则方案
-      const contentText = rawText.replace(/^---[\s\S]*?---/, '')
+      const contentText = rawText.replace(/^---\s*[\s\S]*?\s*---(\s*)/, '')
       // 2. 转换并净化
       const unsafeHtml = marked.parse(contentText)
       htmlContent.value = DOMPurify.sanitize(unsafeHtml as any)
@@ -60,7 +60,6 @@
     init()
   })
   watch(() => props.docsPath, () => {
-
     init()
   })
 </script>
@@ -83,5 +82,15 @@
   padding: 3px;
   border: 1px solid currentColor;
   border-radius: 4px;
+}
+</style>
+<style>
+code {
+  height: 16px;
+  padding: 2px 5px;
+  font-size: 12px;
+  background-color: #f0f0f0;
+  border-radius: 2px;
+  margin: 0 2px;
 }
 </style>

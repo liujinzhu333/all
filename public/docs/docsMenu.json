@@ -10,9 +10,29 @@
     "title": "系统",
     "children": [
       {
-        "name": "docs.md",
-        "path": "/Users/liujinzhu/code/no-name/all/public/docs/all/docs.md",
-        "docsPath": "/docs/all/docs.md",
+        "name": "0_home.md",
+        "path": "/Users/liujinzhu/code/no-name/all/public/docs/all/0_home.md",
+        "docsPath": "/docs/all/0_home.md",
+        "isDirectory": false,
+        "meta": {
+          "title": "首页"
+        },
+        "title": "首页"
+      },
+      {
+        "name": "1_projects.md",
+        "path": "/Users/liujinzhu/code/no-name/all/public/docs/all/1_projects.md",
+        "docsPath": "/docs/all/1_projects.md",
+        "isDirectory": false,
+        "meta": {
+          "title": "项目"
+        },
+        "title": "项目"
+      },
+      {
+        "name": "2_docs.md",
+        "path": "/Users/liujinzhu/code/no-name/all/public/docs/all/2_docs.md",
+        "docsPath": "/docs/all/2_docs.md",
         "isDirectory": false,
         "meta": {
           "title": "文档"
@@ -20,14 +40,34 @@
         "title": "文档"
       },
       {
-        "name": "home.md",
-        "path": "/Users/liujinzhu/code/no-name/all/public/docs/all/home.md",
-        "docsPath": "/docs/all/home.md",
+        "name": "3_utils.md",
+        "path": "/Users/liujinzhu/code/no-name/all/public/docs/all/3_utils.md",
+        "docsPath": "/docs/all/3_utils.md",
         "isDirectory": false,
         "meta": {
-          "title": "首页"
+          "title": "工具"
         },
-        "title": "首页"
+        "title": "工具"
+      },
+      {
+        "name": "4_changelog.md",
+        "path": "/Users/liujinzhu/code/no-name/all/public/docs/all/4_changelog.md",
+        "docsPath": "/docs/all/4_changelog.md",
+        "isDirectory": false,
+        "meta": {
+          "title": "记录"
+        },
+        "title": "记录"
+      },
+      {
+        "name": "5_manage.md",
+        "path": "/Users/liujinzhu/code/no-name/all/public/docs/all/5_manage.md",
+        "docsPath": "/docs/all/5_manage.md",
+        "isDirectory": false,
+        "meta": {
+          "title": "管理"
+        },
+        "title": "管理"
       }
     ]
   },

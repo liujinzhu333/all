@@ -1,11 +1,10 @@
 import axios from 'axios'
 
 const isDev = import.meta.env.DEV;
-const useJson = !isDev
 
 // 创建axios实例
 const http = axios.create({
-  baseURL: useJson ? '/all' : '/',  // API的基础路径
+  baseURL: !isDev ? '/all' : '/',  // API的基础路径
   timeout: 10000,                       // 请求超时时间
 })
 
@@ -32,7 +31,10 @@ http.interceptors.request.use(config => {
   // 在发送请求之前做些什么，比如添加token等
   // config.headers['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
   const isLocation =  config.url?.endsWith('.json')
-  if (useJson && !isLocation) {
+  if (isLocation && isDev) {
+    config.url = `/all${config.url}`
+  }
+  if (!isDev) {
     config.url = getJsonUrl(config)
   }
   return config
@@ -45,7 +47,7 @@ http.interceptors.request.use(config => {
 http.interceptors.response.use(response => {
   const isLocation =  response.config.url?.endsWith('.json')
   // 对响应数据做点什么
-  if (useJson || isLocation) {
+  if (!isDev || isLocation) {
     return response.data
   } else {
     return response.data.data;
