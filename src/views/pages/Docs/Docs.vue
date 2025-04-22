@@ -10,6 +10,7 @@
         :data="docsMenu"
         :props="defaultProps"
         :filter-node-method="filterNode"
+        style="margin-top: 10px;"
         @node-click="handleNodeClick"
       />
     </div>

@@ -110,6 +110,10 @@
       title: 'pk',
       key: 'pk',
     },
+    {
+      title: 'column',
+      key: 'column',
+    },
   ]
   const tableList = ref() // 数据表列表
   const tableInfo = ref<any>([])

@@ -72,6 +72,28 @@
     ]
   },
   {
+    "name": "js",
+    "path": "/Users/liujinzhu/code/no-name/all/public/docs/js",
+    "docsPath": "/docs/js/index.md",
+    "isDirectory": true,
+    "meta": {
+      "title": "技术"
+    },
+    "title": "技术",
+    "children": [
+      {
+        "name": "macJs.md",
+        "path": "/Users/liujinzhu/code/no-name/all/public/docs/js/macJs.md",
+        "docsPath": "/docs/js/macJs.md",
+        "isDirectory": false,
+        "meta": {
+          "title": "Mac脚本"
+        },
+        "title": "Mac脚本"
+      }
+    ]
+  },
+  {
     "name": "other.md",
     "path": "/Users/liujinzhu/code/no-name/all/public/docs/other.md",
     "docsPath": "/docs/other.md",

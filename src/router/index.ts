@@ -21,7 +21,7 @@ const router = createRouter({
           meta: {
             title: '首页',
           },
-          component: () => import('../views/pages/Home.vue'),
+          component: () => import('../views/pages/Home/Home.vue'),
         },
         {
           path: 'about',

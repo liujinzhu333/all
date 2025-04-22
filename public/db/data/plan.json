@@ -92,7 +92,7 @@
     "type": "生活",
     "title": "看房子",
     "description": "3月内看好新的房子",
-    "status": null,
+    "status": "3",
     "pid": 1
   },
   {
@@ -100,7 +100,7 @@
     "type": "生活",
     "title": "公司体检",
     "description": "3.24前进行公司体检",
-    "status": null,
+    "status": "3",
     "pid": 1
   },
   {
@@ -108,7 +108,71 @@
     "type": "生活",
     "title": "驾照体检",
     "description": "驾照到期体检",
-    "status": null,
+    "status": "1",
     "pid": 1
+  },
+  {
+    "id": 15,
+    "type": "技术",
+    "title": "我的网站",
+    "description": "自我，世界",
+    "status": "2",
+    "pid": 2
+  },
+  {
+    "id": 16,
+    "type": "技术",
+    "title": "技术方案",
+    "description": null,
+    "status": "2",
+    "pid": 15
+  },
+  {
+    "id": 17,
+    "type": "技术",
+    "title": "基础功能",
+    "description": "将网站基础搭建",
+    "status": "1",
+    "pid": 15
+  },
+  {
+    "id": 18,
+    "type": "技术",
+    "title": "首页完善",
+    "description": "",
+    "status": "1",
+    "pid": 17
+  },
+  {
+    "id": 19,
+    "type": "技术",
+    "title": "项目页面",
+    "description": null,
+    "status": "1",
+    "pid": 17
+  },
+  {
+    "id": 20,
+    "type": "技术",
+    "title": "文档页面",
+    "description": null,
+    "status": "1",
+    "pid": 17
+  },
+  {
+    "id": 21,
+    "type": "技术",
+    "title": "工具页面",
+    "description": null,
+    "status": "1",
+    "pid": 17
+  },
+  {
+    "id": 22,
+    "type": "技术",
+    "title": "记录页面",
+    "description": null,
+    "status": "1",
+    "pid": 17
   }
 ]

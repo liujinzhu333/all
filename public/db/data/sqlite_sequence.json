@@ -13,19 +13,11 @@
   },
   {
     "name": "plan",
-    "seq": 14
+    "seq": 22
   },
   {
     "name": "project",
-    "seq": 1
-  },
-  {
-    "name": "dict",
     "seq": 2
-  },
-  {
-    "name": "dict_item",
-    "seq": 1
   },
   {
     "name": "important_day",

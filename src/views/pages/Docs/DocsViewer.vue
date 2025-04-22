@@ -84,7 +84,16 @@
   border-radius: 4px;
 }
 </style>
-<style>
+<style lang="css">
+pre {
+  padding: 5px 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  code {
+    padding: 0;
+    margin: 0;
+  }
+}
 code {
   height: 16px;
   padding: 2px 5px;

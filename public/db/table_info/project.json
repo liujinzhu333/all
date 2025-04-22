@@ -38,5 +38,13 @@
     "notnull": 0,
     "dflt_value": null,
     "pk": 0
+  },
+  {
+    "cid": 5,
+    "name": "manage",
+    "type": "TEXT",
+    "notnull": 0,
+    "dflt_value": null,
+    "pk": 0
   }
 ]

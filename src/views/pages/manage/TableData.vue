@@ -38,7 +38,7 @@
         v-for="item in tableInfoColumn"
         :label="item.title"
       >
-      {{item}}
+      <!-- {{item}} -->
         <el-input
           v-if="item.type === 'CLOB'"
           v-model="form[item.key]"

@@ -4,6 +4,15 @@
     "name": "all",
     "url": "https://liujinzhu333.github.io/all/",
     "github": "https://github.com/liujinzhu333/all",
-    "status": 1
+    "status": 1,
+    "manage": null
+  },
+  {
+    "id": 2,
+    "name": "uni-app",
+    "url": "https://static-mp-527b475f-4514-4c8a-bdf7-28ab5827164e.next.bspapp.com/#/",
+    "github": null,
+    "status": 1,
+    "manage": "https://unicloud.dcloud.net.cn/"
   }
 ]

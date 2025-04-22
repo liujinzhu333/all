@@ -9,39 +9,23 @@
   },
   {
     "cid": 1,
-    "name": "name",
-    "type": "TEXT",
+    "name": "title",
+    "type": "DATETIME",
     "notnull": 0,
     "dflt_value": null,
     "pk": 0
   },
   {
     "cid": 2,
-    "name": "url",
-    "type": "TEXT",
+    "name": "dateTime",
+    "type": "DATETIME",
     "notnull": 0,
     "dflt_value": null,
     "pk": 0
   },
   {
     "cid": 3,
-    "name": "github",
-    "type": "TEXT",
-    "notnull": 0,
-    "dflt_value": null,
-    "pk": 0
-  },
-  {
-    "cid": 4,
-    "name": "status",
-    "type": "INTEGER",
-    "notnull": 0,
-    "dflt_value": null,
-    "pk": 0
-  },
-  {
-    "cid": 5,
-    "name": "manage",
+    "name": "content",
     "type": "TEXT",
     "notnull": 0,
     "dflt_value": null,
