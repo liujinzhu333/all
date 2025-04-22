@@ -1,10 +1,17 @@
 <template>
   <el-card
     header="我的工作台"
-    style="min-width: 600px;"
+    style="width: 100%;min-height: 300px;"
   >
+    <div style="margin-bottom: 12px;">
+      <el-segmented
+        v-model="filter.status"
+        :options="options"
+        @change="handleChange"
+      />
+    </div>
     <el-tree
-      style="max-width: 600px"
+      style="width: 100%;"
       :data="planList"
       :props="defaultProps"
       @node-click="handleNodeClick"
@@ -28,7 +35,7 @@
   </el-card>
 </template>
 <script lang="ts" setup>
-  import { ref } from 'vue'
+  import { ref, computed } from 'vue'
   import manageService from '@/services/manageService'
 
   const statusMap:any = {
@@ -45,6 +52,32 @@
       text: '已完成',
     },
   }
+
+  const options = ref([{
+    label: '全部',
+    value: '0',
+  }])
+
+  for(let key in statusMap){
+    options.value.push({
+      label: statusMap[key].text,
+      value: key,
+    })
+  }
+
+  const filter = ref({
+    status: '0',
+  })
+
+  const defaultProps = {
+    children: 'children',
+    label: 'title',
+  }
+
+  const planList = ref<any>()
+  // const showPlanList = computed(() => planList)
+
+
   function buildTree(items: any, pid: string|number|null = null) {
     const tree = [];
     
@@ -54,23 +87,25 @@
         if (children.length > 0) {
           item.children = children;
         }
-        tree.push(item);
+        if (children.length > 0 ||  filter.value.status === item.status || filter.value.status === '0') {
+          tree.push(item)
+        }
       }
     }
     
     return tree;
   }
-
-  const defaultProps = {
-    children: 'children',
-    label: 'title',
-  }
-
-  const planList = ref<any>()
-
   const getData = async () => {
     const res = await manageService.getDataList('plan')
     planList.value = buildTree(res.filter(item => item.type !== '预留项'))
+  }
+
+  const handleChange = () => {
+    getData()
+  }
+
+  const handleNodeClick = (item: any) => {
+    console.log(item)
   }
   getData()
 </script>
