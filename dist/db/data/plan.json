@@ -132,7 +132,7 @@
     "type": "技术",
     "title": "基础功能",
     "description": "将网站基础搭建",
-    "status": "1",
+    "status": "2",
     "pid": 15
   },
   {
@@ -140,7 +140,7 @@
     "type": "技术",
     "title": "首页完善",
     "description": "",
-    "status": "1",
+    "status": "2",
     "pid": 17
   },
   {

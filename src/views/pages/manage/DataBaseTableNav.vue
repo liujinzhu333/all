@@ -1,6 +1,6 @@
 <template>
   <el-button size="small" type="primary" @click="getAllTable">获取表</el-button>
-  <el-button size="small" v-if="canOperate" @click="updateTable()">添加数据表</el-button>
+  <el-button size="small" v-if="canOperate" @click="openTableModal()">添加数据表</el-button>
   <el-button size="small" v-if="canOperate" @click="getJson()">导出</el-button>
   <div>
     <div v-for="item in tableList">
@@ -9,7 +9,7 @@
       >
         <el-text class="mx-1">{{ item.name }}</el-text>
         <div style="display: flex; gap: 5px;">
-          <el-link v-if="canOperate" type="primary" :icon="Edit" @click.stop="updateTable(item)"/>
+          <el-link v-if="canOperate" type="primary" :icon="Edit" @click.stop="openTableModal(item)"/>
           <el-link v-if="canOperate" type="danger" :icon="Delete" @click.stop="delTable(item.name)"/>
         </div>
       </div>
@@ -35,7 +35,7 @@
           :prop="item.key"
         >
           <template #default="scope">
-            <div v-if="scope.row.isAdd && item.isEdit !== false">
+            <div v-if="item.isEdit !== false && (scope.row.isAdd || item.key === 'column')">
               <el-select v-if="item.key === 'type'" v-model="scope.row[item.key]">
                 <!-- 文本input -->
                 <el-option value="TEXT" />
@@ -67,7 +67,7 @@
     </el-form>
     <template #footer>
       <div class="dialog-footer">
-        <el-button @click="dialogVisible = false">取消</el-button>
+        <el-button @click="handleClose">取消</el-button>
         <el-button type="primary" @click="handleConfirm">
           确定
         </el-button>
@@ -116,9 +116,9 @@
     },
   ]
   const tableList = ref() // 数据表列表
-  const tableInfo = ref<any>([])
+  const tableInfo = ref<any>({})
   const addColumnList = ref<any>([])
-  const tableInfoList = computed(() => [...tableInfo.value, ...addColumnList.value])
+  const tableInfoList = computed(() => [...tableInfo.value.rows, ...addColumnList.value])
   // 获取数据列表
   const getAllTable = async () => {
     const res = await manageService.getAllTable() || []
@@ -137,8 +137,13 @@
   // 添加数据表
   const addTable = async () => {
     if (!form.value.name) return
-    const keys = tableInfoList.value.filter(item => item.isAdd)
-    await manageService.addTable(form.value.name, form.value.title, keys)
+    await manageService.addTable(form.value.name, form.value.title, tableInfoList.value)
+    getAllTable()
+  }
+  const updateTable = async (isReName?: boolean) => {
+    if (!form.value.name) return
+    const keys =  tableInfoList.value.map(item => ({...item, isAdd: undefined}))
+    await manageService.updateTable(form.value.name, form.value.title, keys, isReName ? selectName.value : undefined)
     getAllTable()
   }
   // 添加数据表字段
@@ -167,28 +172,34 @@
     selectName.value = ''
     addColumnList.value = []
   }
-  const updateTable = (item?: any) => {
+  const openTableModal = async (item?: any) => {
     if (item) {
       selectName.value = item.name
       form.value = {
         ...item
       }
-      getTableInfo(item.name)
+      await getTableInfo(item.name)
+      form.value = {
+        ...item,
+        name: tableInfo.value.name || item.name,
+        title: tableInfo.value.title,
+      }
     } else {
       form.value = {
         name: ''
       }
-      tableInfo.value = []
+      tableInfo.value = {}
     }
     dialogVisible.value = true
   }
   const handleConfirm = async () => {
     if (selectName.value) {
-      if (selectName.value !== form.value.name) {
+      await updateTable(selectName.value !== form.value.name)
+      // if (selectName.value !== form.value.name) {
 
-      } else {
-        await addTableColumn()
-      }
+      // } else {
+      //   await addTableColumn()
+      // }
     } else {
       await addTable()
     }

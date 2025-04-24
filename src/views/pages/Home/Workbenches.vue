@@ -13,45 +13,71 @@
     <el-tree
       style="width: 100%;"
       :data="planList"
-      :props="defaultProps"
+      :props="{
+        children: 'children',
+        label: 'title',
+      }"
+      node-key="id"
+      :default-expanded-keys="defaultExpandedKeys"
       @node-click="handleNodeClick"
     >
       <template #default="{ node, data }">
         <div class="custom-tree-node">
-          <span>{{ node.label }}</span>
-          <span>
-            <el-tag
+          <el-text>{{ node.label }}</el-text>
+          <!-- <span style="display: inline-block;"> -->
+            <el-dropdown 
               v-if="data.status"
-              size="small"
-              :type="statusMap[data.status].type"
-              style="margin: 0 5px;"
+              placement="bottom-start"
+              @command="selectStatus"
             >
-              {{ statusMap[data.status].text }}
-            </el-tag>
-          </span>
+              <el-tag
+                size="small"
+                :type="statusMap[data.status].type"
+                style="margin: 0 5px;"
+              >
+                {{ statusMap[data.status].text }}
+              </el-tag>
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <el-dropdown-item
+                    v-for="(item, key) in statusMap"
+                    :command="({...data, status: key})"
+                  >
+                    <el-tag
+                      size="small"
+                      :type="item.type"
+                    >
+                      {{ item.text }}
+                    </el-tag>
+                  </el-dropdown-item>
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
+          <!-- </span> -->
+          <el-button
+            :icon="Edit"
+            size="small"
+            text
+            circle
+            @click.stop="addPlan"
+          />
+          <el-button
+            :icon="Plus"
+            size="small"
+            text
+            circle
+            @click.stop="addPlan"
+          />
         </div>
       </template>
     </el-tree>
   </el-card>
 </template>
 <script lang="ts" setup>
-  import { ref, computed } from 'vue'
+  import { ref } from 'vue'
   import manageService from '@/services/manageService'
-
-  const statusMap:any = {
-    1: {
-      type: 'info',
-      text: '待开始',
-    },
-    2: {
-      type: 'primary',
-      text: '进行中',
-    },
-    3: {
-      type: 'success',
-      text: '已完成',
-    },
-  }
+  import { Edit, Plus } from '@element-plus/icons-vue'
+  import { statusMap, buildTree } from './const'
 
   const options = ref([{
     label: '全部',
@@ -69,43 +95,38 @@
     status: '0',
   })
 
-  const defaultProps = {
-    children: 'children',
-    label: 'title',
-  }
-
   const planList = ref<any>()
-  // const showPlanList = computed(() => planList)
-
-
-  function buildTree(items: any, pid: string|number|null = null) {
-    const tree = [];
-    
-    for (const item of items) {
-      if (item.pid === pid) {
-        const children = buildTree(items, item.id);
-        if (children.length > 0) {
-          item.children = children;
-        }
-        if (children.length > 0 ||  filter.value.status === item.status || filter.value.status === '0') {
-          tree.push(item)
-        }
-      }
-    }
-    
-    return tree;
-  }
+  const defaultExpandedKeys = [1,2,3,4,5,6,7,8,9,10]
+  let resData:any = []
+  
   const getData = async () => {
     const res = await manageService.getDataList('plan')
-    planList.value = buildTree(res.filter(item => item.type !== '预留项'))
+    resData = res||[]
+    planList.value = buildTree(res.filter((item: any) => item.type !== '预留项'))
   }
 
   const handleChange = () => {
-    getData()
+    planList.value = buildTree(resData.filter((item: any) => item.type !== '预留项'), null, filter.value.status)
   }
 
   const handleNodeClick = (item: any) => {
     console.log(item)
   }
+  const selectStatus = (item: any) => {
+    console.log(333, item)
+  }
+  const addPlan = () => {
+
+  }
   getData()
 </script>
+<style lang="css" scoped>
+.custom-tree-node{
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+}
+.el-button+.el-button {
+  margin: 0;
+}
+</style>

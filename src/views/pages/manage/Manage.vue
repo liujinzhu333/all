@@ -14,6 +14,7 @@
       </el-col>
       <el-col :span="18">
         <TableData
+          :title="tableInfo.title"
           :name="tableInfo.name"
           :tableInfoColumn="tableInfoColumn"
         />
@@ -59,18 +60,19 @@
 
   const tableInfo = ref<{
     name: string
-    list: any[]
+    title?: string
+    rows: any[]
   }>({
     name: '',
-    list: [],
+    rows: [],
   }) // 数据表结构
   
   // 获取数据表结构
   const getTableInfo = async (tableName: string) => {
-    tableInfo.value.list = await manageService.getTableInfo(tableName)
+    tableInfo.value = await manageService.getTableInfo(tableName)
     tableInfo.value.name = tableName
-    tableInfoColumn.value = tableInfo.value.list.map(item => ({
-      title: item.name,
+    tableInfoColumn.value = tableInfo.value.rows.map(item => ({
+      title: item.column || item.name,
       key: item.name,
       type: item.type,
     }))

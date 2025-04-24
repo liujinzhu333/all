@@ -1,0 +1,50 @@
+[
+  {
+    "id": 2,
+    "name": "ce",
+    "title": "测试",
+    "info": "[{\"cid\":0,\"name\":\"id\",\"type\":\"INTEGER\",\"notnull\":0,\"dflt_value\":null,\"pk\":1},{\"cid\":1,\"name\":\"name\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"名称\"},{\"cid\":2,\"name\":\"type\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"22\"}]"
+  },
+  {
+    "id": 3,
+    "name": "table_info",
+    "title": "表信息",
+    "info": "[{\"cid\":0,\"name\":\"id\",\"type\":\"INTEGER\",\"notnull\":0,\"dflt_value\":null,\"pk\":1},{\"cid\":1,\"name\":\"name\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"表名\"},{\"cid\":2,\"name\":\"title\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"表名称\"},{\"cid\":3,\"name\":\"info\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"表信息\"}]"
+  },
+  {
+    "id": 4,
+    "name": "changelog",
+    "title": "记录",
+    "info": "[{\"cid\":0,\"name\":\"id\",\"type\":\"INTEGER\",\"notnull\":0,\"dflt_value\":null,\"pk\":1},{\"cid\":1,\"name\":\"title\",\"type\":\"DATETIME\",\"notnull\":0,\"dflt_value\":null,\"pk\":0},{\"cid\":2,\"name\":\"dateTime\",\"type\":\"DATETIME\",\"notnull\":0,\"dflt_value\":null,\"pk\":0},{\"cid\":3,\"name\":\"content\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0}]"
+  },
+  {
+    "id": 5,
+    "name": "project",
+    "title": "项目",
+    "info": "[{\"cid\":0,\"name\":\"id\",\"type\":\"INTEGER\",\"notnull\":0,\"dflt_value\":null,\"pk\":1},{\"cid\":1,\"name\":\"name\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"名称\"},{\"cid\":2,\"name\":\"url\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"链接\"},{\"cid\":3,\"name\":\"github\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"github\"},{\"cid\":4,\"name\":\"status\",\"type\":\"INTEGER\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"状态\"},{\"cid\":5,\"name\":\"manage\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"管理链接\"}]"
+  },
+  {
+    "id": 6,
+    "name": "plan",
+    "title": "计划",
+    "info": "[{\"cid\":0,\"name\":\"id\",\"type\":\"INTEGER\",\"notnull\":0,\"dflt_value\":null,\"pk\":1},{\"cid\":1,\"name\":\"type\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"类型\"},{\"cid\":2,\"name\":\"title\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"标题\"},{\"cid\":3,\"name\":\"description\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"简介\"},{\"cid\":4,\"name\":\"status\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"状态\"},{\"cid\":5,\"name\":\"pid\",\"type\":\"INTEGER\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"父节点\"}]"
+  },
+  {
+    "id": 7,
+    "name": "account",
+    "title": "账号",
+    "info": "[{\"cid\":0,\"name\":\"id\",\"type\":\"INTEGER\",\"notnull\":0,\"dflt_value\":null,\"pk\":1},{\"cid\":1,\"name\":\"phone\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"手机号\"},{\"cid\":2,\"name\":\"email\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"邮箱\"},{\"cid\":3,\"name\":\"username\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"用户名\"},{\"cid\":4,\"name\":\"password\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"密码\"},{\"cid\":5,\"name\":\"platform\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"平台\"}]"
+  },
+  {
+    "id": 8,
+    "name": "utils",
+    "title": "工具",
+    "info": "[{\"cid\":0,\"name\":\"id\",\"type\":\"INTEGER\",\"notnull\":0,\"dflt_value\":null,\"pk\":1},{\"cid\":1,\"name\":\"name\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"名称\"},{\"cid\":2,\"name\":\"link\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"链接\"},{\"cid\":3,\"name\":\"logo\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0},{\"cid\":4,\"name\":\"type\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"类型\"}]"
+  },
+  {
+    "id": 9,
+    "name": "sign_in",
+    "title": "签到",
+    "info": "[{\"cid\":0,\"name\":\"id\",\"type\":\"INTEGER\",\"notnull\":0,\"dflt_value\":null,\"pk\":1},{\"cid\":1,\"name\":\"title\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"标题\"},{\"cid\":2,\"name\":\"created_at\",\"type\":\"DATETIME\",\"notnull\":0,\"dflt_value\":\"CURRENT_TIMESTAMP\",\"pk\":0,\"column\":\"时间\"}]"
+  }
+]

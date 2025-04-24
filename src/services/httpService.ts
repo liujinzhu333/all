@@ -15,7 +15,8 @@ const getJsonUrl = (config: any) => {
   }
   if (config.url === '/api/db/table/info') {
     const { name } = config.params
-    return `/db/table_info/${name}.json`
+    return `/db/data/table_info.json`
+    // return `/db/table_info/${name}.json`
   }
   // 定义正则表达式并捕获 tableName
   const pattern = /^\/api\/db\/table\/([^/]+)\/list$/

@@ -22,5 +22,9 @@
   {
     "name": "important_day",
     "seq": 1
+  },
+  {
+    "name": "table_info",
+    "seq": 9
   }
 ]

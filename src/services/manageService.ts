@@ -1,5 +1,6 @@
 import http from './httpService'
 
+const isDev = import.meta.env.DEV
 class ManageService {
   /** 数据库连接状态 */
   public async getDatabaseConnectStatus(): Promise<any>{
@@ -25,6 +26,10 @@ class ManageService {
   public async addTable(name: string, title: string, keys: any[]){
     return http.post('/api/db/table/create', { name, title, keys })
   }
+  /** 修改数据表 */
+  public async updateTable(name: string, title: string, keys: any[], oldName?: string){
+    return http.post('/api/db/table/update', { name, title, keys, oldName })
+  }
   /** 删除数据表 */
   public async delTable(name: string){
     return http.get('/api/db/table/delete', { params: { name }} )
@@ -35,7 +40,15 @@ class ManageService {
   }
   /** 获取数据表结构 */
   public async getTableInfo(name: string): Promise<any>{
-    return http.get('/api/db/table/info', { params: { name }})
+    const res: any = await http.get<any>('/api/db/table/info', { params: { name }})
+    if (!isDev) {
+      const info = res?.find((item: any) => item.name === name)
+      return {
+        ...info,
+        rows: JSON.parse(info.info),
+      }
+    }
+    return res
   }
   /** 获取数据表数据 */
   public async getDataList(tableName: string, params?: any): Promise<any>{

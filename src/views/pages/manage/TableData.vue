@@ -4,7 +4,7 @@
   >
     <template #header>
       <div class="card-header">
-        <span>数据表({{name}})数据</span>
+        <span>{{ title || '数据表' }}({{name}})数据</span>
       </div>
     </template>
     <el-button v-if="canOperate" @click="openModal()">添加</el-button>
@@ -23,9 +23,11 @@
               删除
             </el-link>
           </div>
-          <el-text v-else>
-            {{ scope.row[item.key] }}
-          </el-text>
+          <div v-else style="max-height: 50px;">
+            <el-text line-clamp="2">
+              {{ scope.row[item.key] }}
+            </el-text>
+          </div>
         </template>
       </el-table-column>
     </el-table>
@@ -84,6 +86,7 @@
   import { canOperate } from '@/config'
 
   const props = withDefaults(defineProps<{
+    title?: string
     name: string
     tableInfoColumn: any[]
   }>(), {
