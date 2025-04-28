@@ -24,59 +24,47 @@
       <template #default="{ node, data }">
         <div class="custom-tree-node">
           <el-text>{{ node.label }}</el-text>
-          <!-- <span style="display: inline-block;"> -->
-            <el-dropdown 
-              v-if="data.status"
-              placement="bottom-start"
-              @command="selectStatus"
-            >
-              <el-tag
-                size="small"
-                :type="statusMap[data.status].type"
-                style="margin: 0 5px;"
-              >
-                {{ statusMap[data.status].text }}
-              </el-tag>
-              <template #dropdown>
-                <el-dropdown-menu>
-                  <el-dropdown-item
-                    v-for="(item, key) in statusMap"
-                    :command="({...data, status: key})"
-                  >
-                    <el-tag
-                      size="small"
-                      :type="item.type"
-                    >
-                      {{ item.text }}
-                    </el-tag>
-                  </el-dropdown-item>
-                </el-dropdown-menu>
-              </template>
-            </el-dropdown>
-          <!-- </span> -->
-          <el-button
-            :icon="Edit"
+          <el-tag
+            v-if="data.status"
             size="small"
-            text
-            circle
-            @click.stop="addPlan"
-          />
-          <el-button
-            :icon="Plus"
-            size="small"
-            text
-            circle
-            @click.stop="addPlan"
-          />
+            :type="statusMap[data.status].type"
+            style="margin: 0 5px;"
+          >
+            {{ statusMap[data.status].text }}
+          </el-tag>
+          <template v-if="canOperate">
+            <el-button
+              :icon="Edit"
+              size="small"
+              text
+              circle
+              @click.stop="editPlan(data)"
+            />
+            <el-button
+              :icon="Plus"
+              size="small"
+              text
+              circle
+              @click.stop="addPlan(data)"
+            />
+          </template>
         </div>
       </template>
     </el-tree>
   </el-card>
+  <EditModal
+    v-model:visible="visible"
+    table="plan"
+    :data="dataInfo"
+    @confirm="getData"
+  />
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue'
-  import manageService from '@/services/manageService'
   import { Edit, Plus } from '@element-plus/icons-vue'
+  import manageService from '@/services/manageService'
+  import EditModal from '@/components/EditModal.vue'
+  import { canOperate } from '@/config/index'
   import { statusMap, buildTree } from './const'
 
   const options = ref([{
@@ -97,6 +85,8 @@
 
   const planList = ref<any>()
   const defaultExpandedKeys = [1,2,3,4,5,6,7,8,9,10]
+  const visible = ref<boolean>(false)
+  const dataInfo = ref<any>({})
   let resData:any = []
   
   const getData = async () => {
@@ -112,11 +102,19 @@
   const handleNodeClick = (item: any) => {
     console.log(item)
   }
-  const selectStatus = (item: any) => {
-    console.log(333, item)
-  }
-  const addPlan = () => {
 
+  const editPlan = (data: any) => {
+    dataInfo.value = {
+      ...data,
+    }
+    visible.value = true
+  }
+  const addPlan = (data: any) => {
+    dataInfo.value = {
+      type: data.type,
+      pid: data.id,
+    }
+    visible.value = true
   }
   getData()
 </script>
