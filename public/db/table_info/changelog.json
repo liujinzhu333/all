@@ -10,7 +10,7 @@
   {
     "cid": 1,
     "name": "title",
-    "type": "DATETIME",
+    "type": "TEXT",
     "notnull": 0,
     "dflt_value": null,
     "pk": 0
@@ -26,6 +26,22 @@
   {
     "cid": 3,
     "name": "content",
+    "type": "CLOB",
+    "notnull": 0,
+    "dflt_value": null,
+    "pk": 0
+  },
+  {
+    "cid": 4,
+    "name": "type",
+    "type": "CHAR",
+    "notnull": 0,
+    "dflt_value": null,
+    "pk": 0
+  },
+  {
+    "cid": 5,
+    "name": "tags",
     "type": "TEXT",
     "notnull": 0,
     "dflt_value": null,

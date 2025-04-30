@@ -14,5 +14,13 @@
     "github": null,
     "status": 1,
     "manage": "https://unicloud.dcloud.net.cn/"
+  },
+  {
+    "id": 3,
+    "name": "相册",
+    "url": "https://liujinzhu333.github.io/album/",
+    "github": "https://github.com/liujinzhu333/album",
+    "status": 1,
+    "manage": null
   }
 ]

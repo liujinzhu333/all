@@ -20,7 +20,7 @@
     "type": "考公",
     "title": "公务员考试",
     "description": "生活，需要做出改变",
-    "status": null,
+    "status": "1",
     "pid": null
   },
   {
@@ -84,7 +84,7 @@
     "type": "生活",
     "title": "孕妇照",
     "description": "孕妇照拍摄计划",
-    "status": null,
+    "status": "1",
     "pid": 1
   },
   {
@@ -115,7 +115,7 @@
     "id": 15,
     "type": "技术",
     "title": "我的网站",
-    "description": "自我，世界",
+    "description": "自我，世界，管理",
     "status": "2",
     "pid": 2
   },
@@ -140,7 +140,7 @@
     "type": "技术",
     "title": "首页完善",
     "description": "",
-    "status": "2",
+    "status": "3",
     "pid": 17
   },
   {
@@ -148,7 +148,7 @@
     "type": "技术",
     "title": "项目页面",
     "description": null,
-    "status": "1",
+    "status": "3",
     "pid": 17
   },
   {
@@ -164,7 +164,7 @@
     "type": "技术",
     "title": "工具页面",
     "description": null,
-    "status": "1",
+    "status": "2",
     "pid": 17
   },
   {
@@ -172,7 +172,23 @@
     "type": "技术",
     "title": "记录页面",
     "description": null,
-    "status": "1",
+    "status": "3",
     "pid": 17
+  },
+  {
+    "id": 23,
+    "type": "技术",
+    "title": "相册",
+    "description": "相册",
+    "status": "1",
+    "pid": 2
+  },
+  {
+    "id": 24,
+    "type": "技术",
+    "title": "设置功能",
+    "description": null,
+    "status": "1",
+    "pid": 15
   }
 ]
