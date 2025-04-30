@@ -4,7 +4,7 @@
       <el-header>
         <Header />
       </el-header>
-      <el-main>
+      <el-main style="height: calc(100vh - 64px); overflow: auto;">
         <RouterView />
       </el-main>
     </el-container>

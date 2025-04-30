@@ -7,7 +7,15 @@
   >
   <el-form :model="form" label-width="auto" style="max-width: 600px">
       <el-form-item v-for="item in tableInfo?.rows" :label="item.column||item.name">
-        <el-input v-model="form[item.name]" :disabled="item.name === 'id'"/>
+        <el-date-picker
+          v-if="item.type === 'DATETIME'"
+          v-model="form[item.name]"
+          type="date"
+          value-format="YYYY-MM-DD"
+          placeholder="选择时间"
+          clearable
+        />
+        <el-input v-else v-model="form[item.name]" :disabled="item.name === 'id'" clearable/>
       </el-form-item>
     </el-form>
     <template #footer>

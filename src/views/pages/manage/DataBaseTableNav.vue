@@ -118,7 +118,7 @@
   const tableList = ref() // 数据表列表
   const tableInfo = ref<any>({})
   const addColumnList = ref<any>([])
-  const tableInfoList = computed(() => [...tableInfo.value.rows, ...addColumnList.value])
+  const tableInfoList = computed(() => [...tableInfo.value?.rows||[], ...addColumnList.value])
   // 获取数据列表
   const getAllTable = async () => {
     const res = await manageService.getAllTable() || []
@@ -195,10 +195,13 @@
   const handleConfirm = async () => {
     if (selectName.value) {
       await updateTable(selectName.value !== form.value.name)
+      if (tableInfoList.value.find(item => item.isAdd)) {
+        await addTableColumn()
+      }
       // if (selectName.value !== form.value.name) {
 
       // } else {
-      //   await addTableColumn()
+      //   
       // }
     } else {
       await addTable()
