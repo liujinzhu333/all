@@ -102,5 +102,16 @@
       "title": "其他"
     },
     "title": "其他"
+  },
+  {
+    "name": "self",
+    "path": "/Users/liujinzhu/code/no-name/all/public/docs/self",
+    "docsPath": "/docs/self/index.md",
+    "isDirectory": true,
+    "meta": {
+      "title": "个人信息"
+    },
+    "title": "个人信息",
+    "children": []
   }
 ]

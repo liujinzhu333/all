@@ -26,6 +26,13 @@
             {{util.name}}
           </el-link>
           <el-button
+            :icon="DocumentCopy"
+            size="small"
+            text
+            circle
+            @click.stop="copyUrl(util.link)"
+          />
+          <el-button
             v-if="canOperate"
             :icon="Edit"
             size="small"
@@ -47,10 +54,11 @@
 </template>
 <script lang="ts" setup>
   import { ref, computed } from 'vue'
-  import { Edit, Link, Plus } from '@element-plus/icons-vue'
+  import { Edit, Link, Plus, DocumentCopy } from '@element-plus/icons-vue'
   import { canOperate } from '@/config/index'
   import EditModal from '@/components/EditModal.vue'
   import manageService from '@/services/manageService'
+  import { copyText } from '@/utils/copy'
 
   const utilList = ref<any>([])
   const visible = ref<boolean>(false)
@@ -79,6 +87,9 @@
   const editData = (util: any) => {
     dataInfo.value = { ...util }
     visible.value = true
+  }
+  const copyUrl = (url: string) => {
+    copyText(url)
   }
   getDataList()
 </script>

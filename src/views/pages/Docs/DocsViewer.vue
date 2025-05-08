@@ -69,6 +69,21 @@
 .markdown-viewer {
   width: 100%;
   margin: 0 auto;
+  h3 {
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  h4 {
+    font-weight: 500;
+    margin-top: 10px;
+  }
+  ol, ul {
+    padding-inline-start: 20px;
+  }
+  pre {
+    margin: 5px 0;
+  }
 }
 
 .markdown-viewer pre[class*="language-"] {

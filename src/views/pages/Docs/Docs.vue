@@ -24,10 +24,14 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { ref, watch } from 'vue'
+  import { onMounted, ref, watch } from 'vue'
+  import { useRouter, useRoute } from 'vue-router'
   import docsService from '@/services/docsServices'
 
   import DocsViewer from './DocsViewer.vue'
+
+  const router = useRouter()
+  const route = useRoute()
 
   interface DocsItem {
     title: string
@@ -52,20 +56,26 @@
   }
 
   const handleNodeClick = (data: DocsItem) => {
+    router.push({ query: { docs: data.title}})
     currentDocs.value = data
   }
   const getDocsMenu = async () => {
     try {
       const list = await docsService.getDocsMenu()
       docsMenu.value = list
+      if (route.query.docs) {
+        // currentDocs.value
+      }
       currentDocs.value = docsMenu.value?.[0] || {}
     } catch (err) {
       console.error('获取docs目录:', err)
     }
   }
-  getDocsMenu()
   watch(filterText, (val) => {
     treeRef.value!.filter(val)
+  })
+  onMounted(() => {
+    getDocsMenu()
   })
 </script>
 <style scoped>
@@ -85,5 +95,12 @@
     border-radius: 10px;
     padding: 20px;
   }
+}
+h1 {
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+h3 {
+  font-weight: 500;
 }
 </style>

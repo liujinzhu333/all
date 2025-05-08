@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <div class="header">
     <nav>
       <RouterLink
         v-for="item in menuList"
@@ -9,10 +9,18 @@
         {{ item.name }}
       </RouterLink>
     </nav>
-  </header>
+    <RouterLink
+      v-if="canOperate"
+      to="self"
+    >
+      我
+    </RouterLink>
+  </div>
 </template>
 <script lang="ts" setup>
-  const menuList = [
+  import  { computed } from 'vue'
+  import { canOperate } from '@/config'
+  const menuList = computed(() => [
     {
       name: '首页',
       value: 'home',
@@ -52,15 +60,17 @@
       name: '管理',
       value: 'manage',
       path: 'manage',
+      show: canOperate,
     }
-  ]
+  ].filter(item => item.show === undefined || item.show)) 
 </script>
 <style scoped>
-header{
+.header{
   width: 100%;
-  height: 64px;
+  height: 60px;
   background-color: var(--color-white);
   display: flex;
+  justify-content: space-between;
   align-items: center;
   nav {
     display: flex;

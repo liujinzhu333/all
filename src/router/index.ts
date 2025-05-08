@@ -77,6 +77,14 @@ const router = createRouter({
           component: () => import('../views/pages/manage/Manage.vue'),
         },
         {
+          path: 'self',
+          name: 'self',
+          meta: {
+            title: '我',
+          },
+          component: () => import('../views/pages/Self/self.vue'),
+        },
+        {
           path: 'kaogong',
           name: 'kaogong',
           component: () => import('../views/pages/KaoGong.vue'),

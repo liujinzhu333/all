@@ -8,6 +8,7 @@ title: 系统
   分为首页、项目、文档、工具、记录、管理六个页面
 ### 技术
 前端使用
+`node` 版本 `v20.10.0`
 ```
 vite vue vue-router axios pinia
 element Plus
@@ -17,4 +18,17 @@ element Plus
 后端使用node
 ```
 express 和 sqlite3
+```
+
+启动
+```
+npm run dev
+```
+生成 文档目录
+```
+npm run docs
+```
+构建
+```
+npm run build
 ```
