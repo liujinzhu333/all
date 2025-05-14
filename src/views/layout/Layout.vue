@@ -8,11 +8,13 @@
         <RouterView />
       </el-main>
     </el-container>
+    <ConfigSetting />
   </div>
 </template>
 <script lang="ts" setup>
   import { RouterView } from 'vue-router'
-  import Header from './Header.vue';
+  import Header from './Header.vue'
+  import ConfigSetting from './ConfigSetting.vue';
 </script>
 <style scoped>
 .common-layout{

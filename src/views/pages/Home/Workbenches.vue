@@ -84,7 +84,7 @@
   })
 
   const planList = ref<any>()
-  const defaultExpandedKeys = [1,2,3,4,5,6,7,8,9,10]
+  const defaultExpandedKeys = ref([1,2,3,4,5,6,7,8,9,10])
   const visible = ref<boolean>(false)
   const dataInfo = ref<any>({})
   let resData:any = []
@@ -100,6 +100,7 @@
   }
 
   const handleNodeClick = (item: any) => {
+    defaultExpandedKeys.value.push(item.id)
     console.log(item)
   }
 
