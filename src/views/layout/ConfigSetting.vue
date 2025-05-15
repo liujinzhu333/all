@@ -59,15 +59,18 @@
   }
   const deploy = async () => {
     if (deployLoading.value) return
-    deployLoading.value = true
-    activeStep.value = 0
-    await docsServices.getDocsMenu()
-    addStep()
-    await manageService.getAllDataJson()
-    addStep()
-    await configServices.deploy(message.value)
-    addStep()
-    deployLoading.value = false
+    try {
+      deployLoading.value = true
+      activeStep.value = 0
+      await docsServices.getDocsMenu()
+      addStep()
+      await manageService.getAllDataJson()
+      addStep()
+      await configServices.deploy(message.value)
+      addStep()
+    } finally {
+      deployLoading.value = false
+    }
   }
 
 </script>
