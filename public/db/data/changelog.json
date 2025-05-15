@@ -94,5 +94,13 @@
     "content": null,
     "type": "技术",
     "tags": "all"
+  },
+  {
+    "id": 13,
+    "title": "一键部署功能",
+    "dateTime": "2025-05-15",
+    "content": "一键部署到github",
+    "type": "技术",
+    "tags": "all"
   }
 ]

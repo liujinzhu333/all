@@ -13,7 +13,15 @@
       v-if="showView"
       class="action"
     >
-      <el-button @click="deploy">
+      <el-input
+        v-model="message"
+        placeholder="提交记录"
+      />
+      <el-button
+        :disabled="deployLoading||!message"
+        size="mini"
+        @click="deploy"
+      >
         一键部署
       </el-button>
       <el-steps
@@ -42,19 +50,27 @@
   const toggleShow = () => {
     showView.value = !showView.value
   }
+  const message = ref('')
+  const deployLoading = ref(false)
 
   const activeStep = ref(-1)
   const addStep = () => {
     activeStep.value += 1
   }
   const deploy = async () => {
-    addStep()
-    await docsServices.getDocsMenu()
-    addStep()
-    await manageService.getAllDataJson()
-    addStep()
-    await configServices.deploy()
-    addStep()
+    if (deployLoading.value) return
+    try {
+      deployLoading.value = true
+      activeStep.value = 0
+      await docsServices.getDocsMenu()
+      addStep()
+      await manageService.getAllDataJson()
+      addStep()
+      await configServices.deploy(message.value)
+      addStep()
+    } finally {
+      deployLoading.value = false
+    }
   }
 
 </script>
