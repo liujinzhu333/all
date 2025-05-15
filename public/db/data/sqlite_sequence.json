@@ -5,7 +5,7 @@
   },
   {
     "name": "utils",
-    "seq": 33
+    "seq": 36
   },
   {
     "name": "account",
@@ -13,11 +13,11 @@
   },
   {
     "name": "plan",
-    "seq": 24
+    "seq": 25
   },
   {
     "name": "project",
-    "seq": 3
+    "seq": 4
   },
   {
     "name": "important_day",
@@ -29,6 +29,6 @@
   },
   {
     "name": "changelog",
-    "seq": 11
+    "seq": 12
   }
 ]

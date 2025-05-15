@@ -14,7 +14,7 @@ class ManageService {
   public async closeConnection(): Promise<any>{
     return http.get('/api/db/close')
   }
-  /** 断开数据库连接 */
+  /** 同步数据库数据 */
   public async getAllDataJson(){
     return http.get('/api/db/get_json')
   }

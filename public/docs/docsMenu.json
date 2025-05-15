@@ -1,5 +1,15 @@
 [
   {
+    "name": "album.md",
+    "path": "/Users/liujinzhu/code/no-name/all/public/docs/album.md",
+    "docsPath": "/docs/album.md",
+    "isDirectory": false,
+    "meta": {
+      "title": "相册"
+    },
+    "title": "相册"
+  },
+  {
     "name": "all",
     "path": "/Users/liujinzhu/code/no-name/all/public/docs/all",
     "docsPath": "/docs/all/index.md",

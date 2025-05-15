@@ -83,7 +83,7 @@
     "id": 11,
     "type": "生活",
     "title": "孕妇照",
-    "description": "孕妇照拍摄计划",
+    "description": "孕妇照拍摄5.10",
     "status": "1",
     "pid": 1
   },
@@ -132,7 +132,7 @@
     "type": "技术",
     "title": "基础功能",
     "description": "将网站基础搭建",
-    "status": "2",
+    "status": "3",
     "pid": 15
   },
   {
@@ -156,7 +156,7 @@
     "type": "技术",
     "title": "文档页面",
     "description": null,
-    "status": "1",
+    "status": "3",
     "pid": 17
   },
   {
@@ -164,7 +164,7 @@
     "type": "技术",
     "title": "工具页面",
     "description": null,
-    "status": "2",
+    "status": "3",
     "pid": 17
   },
   {
@@ -187,8 +187,16 @@
     "id": 24,
     "type": "技术",
     "title": "设置功能",
-    "description": null,
+    "description": "设置弹框，一键部署、同步数据、同步文档、配置参数",
     "status": "1",
     "pid": 15
+  },
+  {
+    "id": 25,
+    "type": "技术",
+    "title": "上传功能",
+    "description": "可以上传图片到相册目录",
+    "status": "1",
+    "pid": 23
   }
 ]

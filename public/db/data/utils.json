@@ -32,62 +32,62 @@
     "name": "博客园",
     "link": "https://www.cnblogs.com/",
     "logo": "https://www.jyshare.com/wp-content/uploads/2022/03/cnblogs-logo.png",
-    "type": "技术学习"
+    "type": "社区媒体"
   },
   {
     "id": 6,
     "name": "菜鸟工具",
     "link": "https://www.jyshare.com/",
-    "logo": null,
+    "logo": "",
     "type": "实用工具"
   },
   {
     "id": 7,
     "name": "github",
     "link": "https://github.com/",
-    "logo": null,
+    "logo": "https://github.githubassets.com/favicons/favicon.png",
     "type": "代码托管"
   },
   {
     "id": 8,
     "name": "gitee",
     "link": "https://gitee.com/",
-    "logo": null,
+    "logo": " https://gitee.com/favicon.ico",
     "type": "代码托管"
   },
   {
     "id": 9,
     "name": "codepen",
     "link": "https://codepen.io/",
-    "logo": null,
+    "logo": "https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico",
     "type": "技术学习"
   },
   {
     "id": 10,
     "name": "图片处理",
     "link": "https://www.iloveimg.com/zh-cn",
-    "logo": null,
+    "logo": " https://www.iloveimg.com/img/favicons-img/favicon-16x16.png",
     "type": "实用工具"
   },
   {
     "id": 11,
     "name": "ico在线生成器",
     "link": "https://boke112.com/tools/toico/",
-    "logo": null,
+    "logo": "https://boke112.com/favicon.ico",
     "type": "实用工具"
   },
   {
     "id": 12,
     "name": "知乎",
     "link": "https://www.zhihu.com/",
-    "logo": null,
+    "logo": "https://static.zhihu.com/heifetz/favicon.ico",
     "type": "社区媒体"
   },
   {
     "id": 13,
     "name": "简书",
     "link": "https://www.jianshu.com/",
-    "logo": null,
+    "logo": " https://cdn2.jianshu.io/assets/favicons/favicon-e743bfb1821442341c3ab15bdbe804f7ad97676bd07a770ccc9483473aa76f06.ico",
     "type": "社区媒体"
   },
   {
@@ -101,14 +101,14 @@
     "id": 15,
     "name": "roadmap",
     "link": "https://roadmap.sh/",
-    "logo": null,
+    "logo": " https://roadmap.sh/manifest/favicon.ico",
     "type": "技术学习"
   },
   {
     "id": 16,
     "name": "deepseek",
     "link": "https://www.deepseek.com/",
-    "logo": null,
+    "logo": "https://www.deepseek.com/favicon.ico",
     "type": "AI"
   },
   {
@@ -129,7 +129,7 @@
     "id": 19,
     "name": "figma",
     "link": "https://www.figma.com/design/RlMHg4IV2YgRqVn4ZrVc2T/Untitled?node-id=0-1&p=f&t=oDaZajlGY6HUf9by-0",
-    "logo": null,
+    "logo": "https://static.figma.com/app/icon/1/favicon.svg",
     "type": "原型工具"
   },
   {
@@ -143,21 +143,21 @@
     "id": 21,
     "name": "华图在线",
     "link": "https://v.huatu.com/tiku/index",
-    "logo": null,
+    "logo": "https://v.huatu.com/favicon.ico",
     "type": "考公"
   },
   {
     "id": 22,
     "name": "学习强国",
     "link": "https://www.xuexi.cn/",
-    "logo": null,
+    "logo": "https://www.xuexi.cn/favicon.ico",
     "type": "考公"
   },
   {
     "id": 23,
     "name": "阿里巴巴 Iconfont",
-    "link": " iconfont.cn",
-    "logo": null,
+    "link": "https://www.iconfont.cn/",
+    "logo": " https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg",
     "type": "实用工具"
   },
   {
@@ -229,5 +229,26 @@
     "link": "https://unicloud.dcloud.net.cn/",
     "logo": "https://unicloud.dcloud.net.cn/favicon.ico",
     "type": "技术学习"
+  },
+  {
+    "id": 34,
+    "name": "npm中文网",
+    "link": "https://npm.nodejs.cn/",
+    "logo": "https://npm.nodejs.cn/favicon-32x32.png",
+    "type": "技术学习"
+  },
+  {
+    "id": 35,
+    "name": "git",
+    "link": "https://git-scm.com/",
+    "logo": "https://git-scm.com/favicon.ico",
+    "type": "技术学习"
+  },
+  {
+    "id": 36,
+    "name": "git",
+    "link": "https://git-scm.com/",
+    "logo": "https://git-scm.com/favicon.ico",
+    "type": "社区媒体"
   }
 ]
