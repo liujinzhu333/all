@@ -13,7 +13,10 @@
       v-if="showView"
       class="action"
     >
-      <el-button @click="deploy">
+      <el-button
+        :disabled="deployLoading"
+        @click="deploy"
+      >
         一键部署
       </el-button>
       <el-steps
@@ -42,19 +45,23 @@
   const toggleShow = () => {
     showView.value = !showView.value
   }
+  const deployLoading = ref(false)
 
   const activeStep = ref(-1)
   const addStep = () => {
     activeStep.value += 1
   }
   const deploy = async () => {
-    addStep()
+    if (deployLoading.value) return
+    deployLoading.value = true
+    activeStep.value = 0
     await docsServices.getDocsMenu()
     addStep()
     await manageService.getAllDataJson()
     addStep()
     await configServices.deploy()
     addStep()
+    deployLoading.value = false
   }
 
 </script>
