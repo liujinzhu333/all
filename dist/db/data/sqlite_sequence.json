@@ -25,10 +25,14 @@
   },
   {
     "name": "table_info",
-    "seq": 11
+    "seq": 12
   },
   {
     "name": "changelog",
-    "seq": 13
+    "seq": 14
+  },
+  {
+    "name": "files",
+    "seq": 1
   }
 ]

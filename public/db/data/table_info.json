@@ -52,5 +52,11 @@
     "name": "changelog",
     "title": "记录",
     "info": "[{\"cid\":0,\"name\":\"id\",\"type\":\"INTEGER\",\"notnull\":0,\"dflt_value\":null,\"pk\":1},{\"cid\":1,\"name\":\"title\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"标题\"},{\"cid\":2,\"name\":\"dateTime\",\"type\":\"DATETIME\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"时间\"},{\"cid\":3,\"name\":\"content\",\"type\":\"CLOB\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"内容\"},{\"cid\":4,\"name\":\"type\",\"type\":\"CHAR\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"类型\"},{\"name\":\"tags\",\"type\":\"TEXT\",\"column\":\"标签\"}]"
+  },
+  {
+    "id": 12,
+    "name": "files",
+    "title": "文件",
+    "info": "[{\"isAdd\":true,\"name\":\"path\",\"type\":\"TEXT\",\"column\":\"路径\"},{\"isAdd\":true,\"name\":\"originalname\",\"type\":\"TEXT\",\"column\":\"图片名称\"},{\"isAdd\":true,\"name\":\"filename\",\"type\":\"TEXT\",\"column\":\"存储名称\"}]"
   }
 ]
