@@ -3,7 +3,7 @@
     v-model:file-list="fileList"
     list-type="picture-card"
     :on-preview="handlePictureCardPreview"
-    :on-remove="handleRemove"
+    :before-remove="handleRemove"
     :before-upload="beforeUpload"
   >
     <el-icon><Plus /></el-icon>
@@ -18,7 +18,7 @@
   import { ref, computed } from 'vue'
   import { Plus } from '@element-plus/icons-vue'
   import { canOperate } from '@/config'
-  import type { UploadProps, UploadUserFile, UploadRawFile } from 'element-plus'
+  import type { UploadProps, UploadUserFile, UploadRawFile, UploadFile, UploadFiles } from 'element-plus'
   import manageService from '@/services/manageService'
   import fileService from '@/services/FileServices'
 
@@ -38,8 +38,19 @@
   // @ts-ignore
   const albumPath = computed(() => canOperate ? `@fs${__PROJECT_ROOT__}/../album/` : 'https://liujinzhu333.github.io/album/' )
 
-  const handleRemove: UploadProps['onRemove'] = (uploadFile, uploadFiles) => {
-    console.log(uploadFile, uploadFiles)
+  // UploadFile
+  const handleRemove = async (uploadFile: any, uploadFiles: UploadFiles) => {
+    try {
+      await fileService.delFile({
+        id: uploadFile.id,
+        name: uploadFile.name,
+        filename: uploadFile.filename,
+      })
+      return true
+    } catch (err) {
+      console.log(uploadFile, uploadFiles)
+      return false
+    }
   }
 
   const handlePictureCardPreview: UploadProps['onPreview'] = (uploadFile) => {
@@ -49,9 +60,12 @@
 
   const getList = async () => {
     const res = await manageService.getDataList('files')
+    console.log(res)
     fileList.value = res.map((item: any) => ({
       name: item.originalname,
+      filename: item.filename,
       url: `${albumPath.value}${item.path}`,
+      id: item.id,
     }))
   }
   getList()

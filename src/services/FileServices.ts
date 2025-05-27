@@ -7,5 +7,9 @@ class FileService {
     formData.append('name', '123');
     return http.post('/api/file/upload', formData)
   }
+
+  public async delFile(params: any): Promise<any> {
+    return http.post('/api/file/del', params)
+  }
 }
 export default new FileService()
