@@ -1,1 +1,0 @@
-import{_ as s,c as r,e as n,o}from"./index-D_awN-0U.js";const t={};function c(a,e){return o(),r("div",null,e[0]||(e[0]=[n("div",{class:"user-img"},null,-1)]))}const f=s(t,[["render",c]]);export{f as default};

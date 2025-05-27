@@ -77,6 +77,14 @@ const router = createRouter({
           component: () => import('../views/pages/manage/Manage.vue'),
         },
         {
+          path: 'games',
+          name: 'games',
+          meta: {
+            title: '游戏',
+          },
+          component: () => import('../views/pages/games/game.vue'),
+        },
+        {
           path: 'self',
           name: 'self',
           meta: {
@@ -88,7 +96,15 @@ const router = createRouter({
           path: 'kaogong',
           name: 'kaogong',
           component: () => import('../views/pages/KaoGong.vue'),
-        }
+        },
+        {
+          path: 'img',
+          name: 'img',
+          meta: {
+            title: '图片管理',
+          },
+          component: () => import('../views/pages/img/img.vue'),
+        },
       ]
     },
     {

@@ -7,6 +7,9 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 // https://vite.dev/config/
 export default defineConfig({
   base: '/all/',
+  define: {
+    '__PROJECT_ROOT__': JSON.stringify(process.cwd())
+  },
   plugins: [
     vue(),
     vueDevTools(),
@@ -18,6 +21,9 @@ export default defineConfig({
     },
   },
   server: {
+    fs: {
+      allow: ['..'] // 允许访问父目录
+    },
     proxy: {
       '/api/weather': {
         target: 'https://wis.qq.com',
