@@ -102,7 +102,7 @@
   }] : props.tableInfoColumn) : []))
 
   const getList = async () => {
-    tableInfoList.value = await manageService.getDataList(props.name, {})
+    tableInfoList.value = await manageService.getDataList(props.name)
   }
 
   const addData = async () => {

@@ -98,12 +98,20 @@ const router = createRouter({
           component: () => import('../views/pages/KaoGong.vue'),
         },
         {
+          path: 'album',
+          name: 'album',
+          meta: {
+            title: '相册管理',
+          },
+          component: () => import('../views/pages/album/album.vue'),
+        },
+        {
           path: 'img',
           name: 'img',
           meta: {
             title: '图片管理',
           },
-          component: () => import('../views/pages/img/img.vue'),
+          component: () => import('../views/pages/album/img.vue'),
         },
       ]
     },
