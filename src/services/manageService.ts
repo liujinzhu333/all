@@ -51,7 +51,11 @@ class ManageService {
     return res
   }
   /** 获取数据表数据 */
-  public async getDataList(tableName: string, params?: any): Promise<any>{
+  public async getDataList(tableName: string, params?: {
+    page: number
+    pageSize: number
+    [key: string]: any
+  }): Promise<any>{
     return http.get(`/api/db/table/${tableName}/list`, { params })
   }
   /** 添加数据 */

@@ -1,11 +1,5 @@
 [
   {
-    "id": 2,
-    "name": "ce",
-    "title": "测试",
-    "info": "[{\"cid\":0,\"name\":\"id\",\"type\":\"INTEGER\",\"notnull\":0,\"dflt_value\":null,\"pk\":1},{\"cid\":1,\"name\":\"name\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"名称\"},{\"cid\":2,\"name\":\"type\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"22\"}]"
-  },
-  {
     "id": 3,
     "name": "table_info",
     "title": "表信息",
@@ -58,5 +52,11 @@
     "name": "files",
     "title": "文件",
     "info": "[{\"isAdd\":true,\"name\":\"path\",\"type\":\"TEXT\",\"column\":\"路径\"},{\"isAdd\":true,\"name\":\"originalname\",\"type\":\"TEXT\",\"column\":\"图片名称\"},{\"isAdd\":true,\"name\":\"filename\",\"type\":\"TEXT\",\"column\":\"存储名称\"}]"
+  },
+  {
+    "id": 13,
+    "name": "album",
+    "title": "相册",
+    "info": "[{\"isAdd\":true,\"name\":\"title\",\"type\":\"TEXT\",\"column\":\"相册名\"},{\"isAdd\":true,\"name\":\"name\",\"type\":\"TEXT\",\"column\":\"相册\"},{\"isAdd\":true,\"name\":\"list\",\"type\":\"CLOB\",\"column\":\"图片列表\"}]"
   }
 ]

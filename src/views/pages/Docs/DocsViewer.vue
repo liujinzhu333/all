@@ -117,4 +117,8 @@ code {
   border-radius: 2px;
   margin: 0 2px;
 }
+table th,td {
+  background-color: #f0f0f0;
+  padding: 5px 10px;
+}
 </style>

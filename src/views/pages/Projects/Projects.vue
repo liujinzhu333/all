@@ -29,7 +29,10 @@
                 />
               </el-link>
 
-              <el-link v-if="item.manage" :href="item.manage" target="_blank">
+              <el-link
+                v-if="item.manage"
+                @click="toPath(item.manage)"
+              >
                 <el-icon><Setting /></el-icon>
               </el-link>
               <el-button
@@ -62,11 +65,14 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { ref, computed } from 'vue'
+  import { ref } from 'vue'
+  import { useRouter } from 'vue-router'
   import { Edit, Link, Setting } from '@element-plus/icons-vue'
   import { canOperate } from '@/config/index'
   import manageService from '@/services/manageService'
   import EditModal from '@/components/EditModal.vue'
+
+  const router = useRouter()
 
   const dataList = ref<any>([])
   const visible = ref<boolean>(false)
@@ -82,6 +88,14 @@
   const editProject = (item: any) => {
     dataInfo.value = { ...item }
     visible.value = true
+  }
+  const toPath = (url: string) => {
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+      window.open(url)
+    } else {
+      const { href } = router.resolve(url)
+      window.open(href)
+    }
   }
   getList()
   let data = [
