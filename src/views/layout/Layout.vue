@@ -9,6 +9,7 @@
       </el-main>
     </el-container>
     <ConfigSetting v-if="canOperate" />
+    <CanHome />
   </div>
 </template>
 <script lang="ts" setup>
@@ -16,6 +17,7 @@
   import Header from './Header.vue'
   import ConfigSetting from './ConfigSetting.vue'
   import { canOperate } from '@/config'
+  import CanHome from '../CanvasHome/CanHome.vue'
 </script>
 <style scoped>
 .common-layout{
