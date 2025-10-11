@@ -68,7 +68,23 @@ class ManageService {
     if(isDev()) {
       return http.post(`/api/db/table/${tableName}/add`, params)
     } else {
+      if ('sharedStorage' in window) {
+        // 共享存储 API 可用
+        const sharedStorage = window.sharedStorage;
+        sharedStorage.set('ab-test-group', 'variant-a').then(res =>{
+          console.log(3331, res)
+        }).catch(e => {
+          console.log(3332, e)
+        })
+        console.log(sharedStorage)
+      } else {
+        // 不支持共享存储 API，需要提供回退方案
+        console.error('Shared Storage API is not supported in this browser.');
+      }
+      // window.sharedStorage.set('21313213', '2312131332')
+      const bc = new BroadcastChannel('storage_channel');
       localStorage.setItem(tableName, JSON.stringify(params))
+      bc.postMessage({ type: 'storageUpdate', key: 'shared', value: 'data' });
     }
   }
   /** 删除数据 */
