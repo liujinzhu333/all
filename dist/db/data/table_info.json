@@ -58,5 +58,11 @@
     "name": "album",
     "title": "相册",
     "info": "[{\"isAdd\":true,\"name\":\"title\",\"type\":\"TEXT\",\"column\":\"相册名\"},{\"isAdd\":true,\"name\":\"name\",\"type\":\"TEXT\",\"column\":\"相册\"},{\"isAdd\":true,\"name\":\"list\",\"type\":\"CLOB\",\"column\":\"图片列表\"}]"
+  },
+  {
+    "id": 14,
+    "name": "todos",
+    "title": "待办",
+    "info": "[{\"isAdd\":true,\"name\":\"title\",\"type\":\"TEXT\",\"column\":\"标题\"},{\"isAdd\":true,\"name\":\"status\",\"type\":\"INTEGER\",\"column\":\"状态\"}]"
   }
 ]

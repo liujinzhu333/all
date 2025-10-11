@@ -113,6 +113,14 @@ const router = createRouter({
           },
           component: () => import('../views/pages/album/img.vue'),
         },
+        {
+          path: 'todos',
+          name: 'todos',
+          meta: {
+            title: 'TODO',
+          },
+          component: () => import('../views/pages/Todo.vue'),
+        },
       ]
     },
     {

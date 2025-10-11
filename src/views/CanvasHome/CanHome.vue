@@ -8,7 +8,7 @@
     </div>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
   import { onMounted, computed, ref } from 'vue'
   import { World } from './World/World'
 

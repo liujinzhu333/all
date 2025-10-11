@@ -13,10 +13,17 @@
       v-if="showView"
       class="action"
     >
+      <div>
+        <ElSwitch
+          size="small"
+          :model-value="config.isDev" @change="handleChangeDev"
+        />
+      </div>
       <el-input
         v-model="message"
         placeholder="提交记录"
       />
+      <ElCheckbox v-model="isTypeCheck" />
       <el-button
         :disabled="deployLoading||!message"
         size="mini"
@@ -24,6 +31,7 @@
       >
         一键部署
       </el-button>
+      调试
       <el-steps
         style="height: 150px;"
         direction="vertical"
@@ -45,12 +53,22 @@
   import configServices from '@/services/ConfigServices'
   import manageService from '@/services/manageService'
   import docsServices from '@/services/docsServices'
+  import { ElCheckbox, ElSwitch } from 'element-plus'
+
+  import { useConfigStore } from '@/stores/config'
+
+  const config = useConfigStore()
+
+  const handleChangeDev = () => {
+    config.toggleDev()
+  }
 
   const showView = ref(false)
   const toggleShow = () => {
     showView.value = !showView.value
   }
   const message = ref('')
+  const isTypeCheck = ref<boolean>(false)
   const deployLoading = ref(false)
 
   const activeStep = ref(-1)
@@ -66,7 +84,7 @@
       addStep()
       await manageService.getAllDataJson()
       addStep()
-      await configServices.deploy(message.value)
+      await configServices.deploy(message.value, isTypeCheck.value)
       addStep()
     } finally {
       deployLoading.value = false

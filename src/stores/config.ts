@@ -1,17 +1,18 @@
 // stores/counter.js
 import { defineStore } from 'pinia'
+const isDev = import.meta.env.DEV
 
-export const useCounterStore = defineStore('counter', {
+export const useConfigStore = defineStore('config', {
   state: () => {
     return {
-      count: 0,
+      isDev: isDev,
     }
   },
   // could also be defined as
   // state: () => ({ count: 0 })
   actions: {
-    increment() {
-      this.count++
+    toggleDev() {
+      this.isDev = !this.isDev
     },
   },
 })

@@ -36,6 +36,12 @@
     //   value: 'components',
     //   path: 'components',
     // },
+
+    {
+      name: 'Todo',
+      value: 'todos',
+      path: 'todos',
+    },
     {
       name: '项目',
       value: 'projects',

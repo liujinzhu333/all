@@ -1,6 +1,10 @@
+import { useConfigStore } from '@/stores/config'
 import http from './httpService'
 
-const isDev = import.meta.env.DEV
+const isDev = () => {
+  const config = useConfigStore()
+  return config.isDev
+}
 class ManageService {
   /** 数据库连接状态 */
   public async getDatabaseConnectStatus(): Promise<any>{
@@ -41,7 +45,7 @@ class ManageService {
   /** 获取数据表结构 */
   public async getTableInfo(name: string): Promise<any>{
     const res: any = await http.get<any>('/api/db/table/info', { params: { name }})
-    if (!isDev) {
+    if (!isDev()) {
       const info = res?.find((item: any) => item.name === name)
       return {
         ...info,
@@ -56,7 +60,8 @@ class ManageService {
     pageSize: number
     [key: string]: any
   }): Promise<any>{
-    return http.get(`/api/db/table/${tableName}/list`, { params })
+    const res = await http.get(`/api/db/table/${tableName}/list`, { params })
+    return res
   }
   /** 添加数据 */
   public async addDataItem(tableName: string, params?: any){

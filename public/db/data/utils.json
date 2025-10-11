@@ -250,5 +250,19 @@
     "link": "https://git-scm.com/",
     "logo": "https://git-scm.com/favicon.ico",
     "type": "社区媒体"
+  },
+  {
+    "id": 37,
+    "name": "electron",
+    "link": "https://www.electronjs.org/zh/",
+    "logo": "https://www.electronjs.org/zh/assets/img/logo.svg",
+    "type": "技术学习"
+  },
+  {
+    "id": 38,
+    "name": "tauri",
+    "link": "https://tauri.nodejs.cn/start/",
+    "logo": "https://tauri.nodejs.cn/favicon.svg",
+    "type": "技术学习"
   }
 ]
