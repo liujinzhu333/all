@@ -65,7 +65,11 @@ class ManageService {
   }
   /** 添加数据 */
   public async addDataItem(tableName: string, params?: any){
-    return http.post(`/api/db/table/${tableName}/add`, params)
+    if(isDev()) {
+      return http.post(`/api/db/table/${tableName}/add`, params)
+    } else {
+      localStorage.setItem(tableName, JSON.stringify(params))
+    }
   }
   /** 删除数据 */
   public async deleteDataItem(tableName: string, id: number){
