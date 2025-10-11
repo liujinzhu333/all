@@ -31,7 +31,6 @@
       >
         一键部署
       </el-button>
-      调试
       <el-steps
         style="height: 150px;"
         direction="vertical"

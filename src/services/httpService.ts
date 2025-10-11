@@ -39,7 +39,6 @@ http.interceptors.request.use(config => {
     config.url = getJsonUrl(config)
     config.baseURL = '/all'
   }
-  config.timeout = 30000
   return config
 }, error => {
   // 对请求错误做些什么

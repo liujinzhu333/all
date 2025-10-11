@@ -5,7 +5,9 @@ class ConfigServices {
     return http.get('/api/script/deploy', { params: {  
       message,
       isTypeCheck,
-    }})
+    },
+    timeout: 60000, // 构建提交超时时间设置为60s
+    })
   }
 }
 
