@@ -1,5 +1,11 @@
 import { useConfigStore } from '@/stores/config'
 import http from './httpService'
+import {
+  setLocalData,
+  getLocalDataList,
+  delLocalData,
+  updateLocalData,
+} from './localStorageService'
 
 const isDev = () => {
   const config = useConfigStore()
@@ -61,39 +67,36 @@ class ManageService {
     [key: string]: any
   }): Promise<any>{
     const res = await http.get(`/api/db/table/${tableName}/list`, { params })
-    return res
+    if(isDev()) {
+      return res
+    } else {
+      const localData = await getLocalDataList(tableName, res)
+      return localData
+    }
   }
   /** 添加数据 */
   public async addDataItem(tableName: string, params?: any){
     if(isDev()) {
       return http.post(`/api/db/table/${tableName}/add`, params)
     } else {
-      if ('sharedStorage' in window) {
-        // 共享存储 API 可用
-        const sharedStorage = window.sharedStorage;
-        sharedStorage.set('ab-test-group', 'variant-a').then(res =>{
-          console.log(3331, res)
-        }).catch(e => {
-          console.log(3332, e)
-        })
-        console.log(sharedStorage)
-      } else {
-        // 不支持共享存储 API，需要提供回退方案
-        console.error('Shared Storage API is not supported in this browser.');
-      }
-      // window.sharedStorage.set('21313213', '2312131332')
-      const bc = new BroadcastChannel('storage_channel');
-      localStorage.setItem(tableName, JSON.stringify(params))
-      bc.postMessage({ type: 'storageUpdate', key: 'shared', value: 'data' });
+      setLocalData(tableName, params)
     }
   }
   /** 删除数据 */
   public async deleteDataItem(tableName: string, id: number){
-    return http.get(`/api/db/table/${tableName}/delete`, { params: { id }})
+    if(isDev()) {
+      return http.get(`/api/db/table/${tableName}/delete`, { params: { id }})
+    } else {
+      delLocalData(tableName, id)
+    }
   }
   /** 修改数据 */
   public async updateDataItem(tableName: string, params: any){
-    return http.post(`/api/db/table/${tableName}/update`, params)
+    if(isDev()) {
+      return http.post(`/api/db/table/${tableName}/update`, params)
+    } else {
+      updateLocalData(tableName, params)
+    }
   }
   /** 获取数据详情 */
   public async getDataInfo(tableName: string, id: string){

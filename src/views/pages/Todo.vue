@@ -1,22 +1,37 @@
 <template>
-  <div>
-    <ElInput v-model="todo" @keydown.enter="addTodo"/>
-    <el-button @click="addTodo">添加</el-button>
-    <ul>
-      <li v-for="item in todos"
-        @click="updateItem(item)"
+  <div style="max-width: 1000px; margin: 0 auto;">
+    <ElCard>
+      <ElInput clearable placeholder="创建待办项" v-model="todo" @keydown.enter="addTodo"/>
+    </ElCard>
+    <ElCard style="margin-top: 20px;">
+      <template
+        v-for="(item, index) in todos"
+        :key="index"
       >
-        <ElCheckbox :model-value="item.status" :true-value="2" />
-        {{ item.title }}
-        <span @click.stop="delItem(item.id)">X</span>
-      </li>
-    </ul>
+        <ElDivider v-if="index != 0" style="margin: 10px 0;"/>
+        <div
+          @click="updateItem(item)"
+          style="height: 32px; display: flex; align-items: center; justify-content: space-between; padding: 5px 0;"
+        >
+          <div style="display: flex;align-items: center;gap: 4px;">
+            <ElCheckbox :model-value="item.status" :true-value="2" />
+            <ElText v-if="item.status === 2" tag="del" type="info" style="cursor: pointer;">
+              {{ item.title }}
+            </ElText>
+            <ElText v-else style="cursor: pointer;">
+              {{ item.title }}
+            </ElText>
+          </div>
+          <el-icon style="cursor: pointer;" @click.stop="delItem(item.id)"><Close /></el-icon>
+        </div>
+      </template>
+    </ElCard>
   </div>
 </template>
 <script setup lang="ts">
   import { onMounted, ref } from 'vue'
   import manageService from '@/services/manageService'
-import { ElCheckbox, ElInput } from 'element-plus'
+import { ElCard, ElCheckbox, ElDivider, ElInput } from 'element-plus'
 
 const todo = ref('')
   const todos = ref([

@@ -7,7 +7,7 @@
   {
     "id": 2,
     "title": "完善todo",
-    "status": 2
+    "status": 1
   },
   {
     "id": 4,
@@ -17,6 +17,16 @@
   {
     "id": 5,
     "title": "离线数据存储",
+    "status": 1
+  },
+  {
+    "id": 8,
+    "title": "优化设置栏",
+    "status": 1
+  },
+  {
+    "id": 10,
+    "title": "优化任务功能，建立将todo项转化为任务项的流程",
     "status": 1
   }
 ]
