@@ -5,6 +5,7 @@ export function generateId() {
 export function isMockId(str: string|number) {
   return str.toString().startsWith('mockId-')
 }
+/** 获取数据项 */
 export async function getLocalData(tableName: string) {
   try {
     const data = localStorage.getItem(`db-${tableName}`)
@@ -61,13 +62,12 @@ export async function delLocalData(tableName: string, id: any) {
     localStorage.setItem(`db-${tableName}`, JSON.stringify(localData))
   }
 }
-
+/** 获取数据列表 */
 export async function getLocalDataList(tableName: string, list: any) {
   let dataList: any = []
   const localData = await getLocalData(tableName) || []
   const delData = await getLocalData('db-delete') || {}
   const { updateData, newData } = localData.reduce((acc: any, item: any) => {
-    console.log(333, item)
     if (isMockId(item.id)) {
       acc.newData.push(item);
     } else {
@@ -86,4 +86,39 @@ export async function getLocalDataList(tableName: string, list: any) {
     ...dataList,
     ...newData,
   ]
+}
+/** 获取同步数据项 */
+export async function getOfflineLocalDataList(tableName: string, []) {
+  // let dataList: any = []
+  const localData = await getLocalData(tableName) || []
+  const delData = await getLocalData('db-delete') || {}
+  
+  // const { updateData, newData } = localData.reduce((acc: any, item: any) => {
+  //   if (isMockId(item.id)) {
+  //     acc.newData.push({
+  //       ...item,
+  //       add: true,
+  //     });
+  //   } else {
+  //     acc.updateData.push(item);
+  //   }
+  //   return acc;
+  // }, { updateData: [], newData: []});
+  // list.forEach((item: any) => {
+  //   if (!delData[tableName]?.includes(item.id)) {
+  //     const updateItem = updateData.find((updateItem: any) => updateItem.id === item.id)
+  //     dataList.push(updateItem || item)
+  //   }
+  // })
+
+  return localData.map((item: any) => {
+    if (isMockId(item.id)) {
+      return {
+        ...item,
+        add: true,
+      }
+    } else {
+      return item
+    }
+  })
 }

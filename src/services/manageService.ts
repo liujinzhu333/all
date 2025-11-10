@@ -1,10 +1,12 @@
 import { useConfigStore } from '@/stores/config'
+import { useClipboard } from '@vueuse/core'
 import http from './httpService'
 import {
   setLocalData,
   getLocalDataList,
   delLocalData,
   updateLocalData,
+  getOfflineLocalDataList,
 } from './localStorageService'
 
 const isDev = () => {
@@ -62,8 +64,8 @@ class ManageService {
   }
   /** 获取数据表数据 */
   public async getDataList(tableName: string, params?: {
-    page: number
-    pageSize: number
+    page?: number
+    pageSize?: number
     [key: string]: any
   }): Promise<any>{
     const res = await http.get(`/api/db/table/${tableName}/list`, { params })
@@ -101,6 +103,11 @@ class ManageService {
   /** 获取数据详情 */
   public async getDataInfo(tableName: string, id: string){
     return http.get(`/api/db/table/${tableName}/info`, { params: { id }})
+  }
+  /** 获取离线数据 */
+  public async getOfflineData(tableName: string){
+    const localData = await getOfflineLocalDataList(tableName, [])
+    return localData
   }
 }
 

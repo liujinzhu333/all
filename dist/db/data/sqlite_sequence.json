@@ -29,7 +29,7 @@
   },
   {
     "name": "changelog",
-    "seq": 14
+    "seq": 15
   },
   {
     "name": "files",
@@ -41,6 +41,6 @@
   },
   {
     "name": "todos",
-    "seq": 10
+    "seq": 15
   }
 ]

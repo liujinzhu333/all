@@ -8,7 +8,7 @@
         <RouterView />
       </el-main>
     </el-container>
-    <ConfigSetting v-if="canOperate" />
+    <ConfigSetting />
     <CanHome />
   </div>
 </template>
@@ -16,7 +16,6 @@
   import { RouterView } from 'vue-router'
   import Header from './Header.vue'
   import ConfigSetting from './ConfigSetting.vue'
-  import { canOperate } from '@/config'
   import CanHome from '../CanvasHome/CanHome.vue'
 </script>
 <style scoped>

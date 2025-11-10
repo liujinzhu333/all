@@ -13,46 +13,51 @@
       v-if="showView"
       class="action"
     >
-      <div>
-        <ElSwitch
-          size="small"
-          :model-value="config.isDev" @change="handleChangeDev"
+      <!-- 一键提交部署 -->
+      <div v-if="canOperate">
+        <div>
+          <ElSwitch
+            size="small"
+            :model-value="config.isDev" @change="handleChangeDev"
+          />
+        </div>
+        <el-input
+          v-model="message"
+          placeholder="提交记录"
         />
+        <ElCheckbox v-model="isTypeCheck" />
+        <el-button
+          :disabled="deployLoading||!message"
+          size="mini"
+          @click="deploy"
+        >
+          一键部署
+        </el-button>
+        <el-steps
+          style="height: 150px;"
+          direction="vertical"
+          process-status="finish"
+          finish-status="success"
+          :active="activeStep"
+        >
+          <el-step title="文档同步" />
+          <el-step title="数据同步" />
+          <el-step title="部署提交" />
+        </el-steps>
+
       </div>
-      <el-input
-        v-model="message"
-        placeholder="提交记录"
-      />
-      <ElCheckbox v-model="isTypeCheck" />
-      <el-button
-        :disabled="deployLoading||!message"
-        size="mini"
-        @click="deploy"
-      >
-        一键部署
-      </el-button>
-      <el-steps
-        style="height: 150px;"
-        direction="vertical"
-        process-status="finish"
-        finish-status="success"
-        :active="activeStep"
-      >
-        <el-step title="文档同步" />
-        <el-step title="数据同步" />
-        <el-step title="部署提交" />
-      </el-steps>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
+  import { computed, h, onMounted, ref } from 'vue'
   import { Setting } from '@element-plus/icons-vue'
   import configServices from '@/services/ConfigServices'
   import manageService from '@/services/manageService'
   import docsServices from '@/services/docsServices'
   import { ElCheckbox, ElSwitch } from 'element-plus'
+  import { canOperate } from '@/config'
 
   import { useConfigStore } from '@/stores/config'
 
@@ -89,6 +94,10 @@
       deployLoading.value = false
     }
   }
+  
+  onMounted(() => {
+    
+  })
 
 </script>
 <style lang="css" scoped>
