@@ -3,9 +3,8 @@
     <ElCard>
       <ElInput clearable placeholder="创建待办项" v-model="todo" @keydown.enter="addTodo"/>
     </ElCard>
-    
-    <ElCard class="list-box">
-      <div class="list-filter">
+    <ElCard class="list-filter">
+      <div style="display: flex; align-items: center; gap: 4px; justify-content: space-between;">
         <ElSelect
           v-model="filterStatus"
           placeholder="默认"
@@ -15,7 +14,10 @@
         />
         <ElButton type="primary" @click="copyTodo">复制</ElButton>
         <ElButton type="primary" @click="copyAddTodo">粘贴</ElButton>
+        <ElCheckbox v-model="showArchive" @change="getDataList">显示已归档</ElCheckbox>
       </div>
+    </ElCard>
+    <ElCard class="list-box"> 
       <template
         v-for="(item, index) in todos"
         :key="index"
@@ -26,8 +28,8 @@
           style="height: 32px; display: flex; align-items: center; justify-content: space-between; padding: 5px 0;"
         >
           <div style="display: flex;align-items: center;gap: 4px;">
-            <ElCheckbox :model-value="item.status" :true-value="2" />
-            <ElText v-if="item.status === 2" tag="del" type="info" style="cursor: pointer;">
+            <ElCheckbox v-if="!item.archive" :model-value="item.status" :true-value="2" />
+            <ElText v-if="item.status === 2 && !item.archive" tag="del" type="info" style="cursor: pointer;">
               {{ item.title }}
             </ElText>
             <ElText v-else style="cursor: pointer;">
@@ -35,7 +37,7 @@
             </ElText>
           </div>
           <div class="right-action">
-            <el-icon style="cursor: pointer;" @click.stop="archiveItem(item)"><DocumentChecked /></el-icon>
+            <el-icon style="cursor: pointer;" @click.stop="archiveItem(item)"><Finished /></el-icon>
             <el-icon style="cursor: pointer;" @click.stop="delItem(item.id)"><Close /></el-icon>
           </div>
         </div>
@@ -52,7 +54,8 @@
   const { copy } = useClipboard()
   const todo = ref('')
   const filterStatus = ref('all')
-  const todos = ref([
+  const showArchive = ref(false)
+  const todos = ref<any[]>([
     {
       id: 0,
       title: 'todo页面',
@@ -63,12 +66,12 @@
     { label: '全部', value: 'all' },
     { label: '未完成', value: 1 },
     { label: '已完成', value: 2 },
-    { label: '已归档', value: 3 },
   ]
 
   async function getDataList() {
     const res = await manageService.getDataList('todos', {
       status: filterStatus.value === 'all' ? [1, 2] : filterStatus.value,
+      archive: showArchive.value ? 1 : 0,
     })
     todos.value = res||[]
   }
@@ -103,6 +106,7 @@
     getDataList()
   }
   async function updateItem(item: any) {
+    if (item.archive) return
     await manageService.updateDataItem('todos', {
       ...item,
       status: item.status === 1 ? 2 : 1,
@@ -112,7 +116,7 @@
   async function archiveItem(item: any) {
     await manageService.updateDataItem('todos', {
       ...item,
-      status: 3,
+      archive: item.archive === 1 ? 0 : 1,
     })
     getDataList()
   }
@@ -129,9 +133,10 @@
   position: relative;
 }
 .list-filter {
+  margin-top: 20px;
   position: sticky;
-  top: 0;
-  height: 32px;
+  top: -20px;
+  z-index: 10;
 }
 .right-action{
   display: flex;

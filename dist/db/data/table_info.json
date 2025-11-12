@@ -63,6 +63,6 @@
     "id": 14,
     "name": "todos",
     "title": "待办",
-    "info": "[{\"isAdd\":true,\"name\":\"title\",\"type\":\"TEXT\",\"column\":\"标题\"},{\"isAdd\":true,\"name\":\"status\",\"type\":\"INTEGER\",\"column\":\"状态\"}]"
+    "info": "[{\"cid\":0,\"name\":\"id\",\"type\":\"INTEGER\",\"notnull\":0,\"dflt_value\":null,\"pk\":1},{\"cid\":1,\"name\":\"title\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"标题\"},{\"cid\":2,\"name\":\"status\",\"type\":\"INTEGER\",\"notnull\":0,\"dflt_value\":null,\"pk\":0,\"column\":\"状态\"},{\"name\":\"archive\",\"type\":\"INTEGER\"}]"
   }
 ]

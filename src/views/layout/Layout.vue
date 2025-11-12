@@ -9,14 +9,14 @@
       </el-main>
     </el-container>
     <ConfigSetting />
-    <CanHome />
+    <!-- <CanHome /> -->
   </div>
 </template>
 <script lang="ts" setup>
   import { RouterView } from 'vue-router'
   import Header from './Header.vue'
   import ConfigSetting from './ConfigSetting.vue'
-  import CanHome from '../CanvasHome/CanHome.vue'
+  // import CanHome from '../CanvasHome/CanHome.vue'
 </script>
 <style scoped>
 .common-layout{
